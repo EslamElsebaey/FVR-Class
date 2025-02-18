@@ -2566,6 +2566,7 @@ html[dir=ltr] .select2-container .select2-selection--single .select2-selection__
 }
 @media only screen and (max-width: 767px) {
   .progressbar li span {
+    width: 100%;
     max-width: 90px;
     text-align: center;
   }
@@ -4486,6 +4487,9 @@ html[dir=ltr] .faq-item .faq-answer {
 }
 html[dir=ltr] .features-content .features-list li i {
   margin-top: 2px;
+}
+html[dir=ltr] .copyright .tasawk-text a {
+  gap: 3px;
 }
 @media only screen and (max-width: 767px) {
   html[dir=ltr] .cta-box .cta-text {

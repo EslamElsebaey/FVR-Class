@@ -119,6 +119,7 @@
   color: #000;
 
   @include max-768 {
+    width: 100%;
     max-width: 90px;
     text-align: center;
   }
