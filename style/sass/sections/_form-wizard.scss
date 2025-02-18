@@ -58,7 +58,9 @@
   width: 100%;
   margin: 0;
   @include max-768 {
-    justify-content: space-between;
+    justify-content: unset;
+    align-items: flex-start;
+    gap: 15px;
   }
   // @include max-768 {
   //   flex-wrap: nowrap;
@@ -72,11 +74,11 @@
   // }
 }
 
-.progressbar li:last-of-type {
-  -webkit-box-flex: 0;
-  -ms-flex: 0;
-  flex: 0;
-}
+// .progressbar li:last-of-type {
+//   -webkit-box-flex: 0;
+//   -ms-flex: 0;
+//   flex: 0;
+// }
 
 .progressbar li:last-of-type::after {
   display: none;
@@ -92,6 +94,7 @@
   @include max-768 {
     flex-direction: column;
     gap: 7px;
+    width: calc((100% / 3) - 10px);
   }
 }
 
@@ -111,9 +114,11 @@
 
 .progressbar li span {
   display: inline-block;
-  white-space: nowrap;
+  // white-space: nowrap;
   font-size: 14px;
   color: #000;
+  max-width: 90px;
+  text-align: center;
   // @include max-768 {
   //   font-size: 13px;
   // }
