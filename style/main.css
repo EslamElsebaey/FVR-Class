@@ -2563,8 +2563,12 @@ html[dir=ltr] .select2-container .select2-selection--single .select2-selection__
   display: inline-block;
   font-size: 14px;
   color: #000;
-  max-width: 90px;
-  text-align: center;
+}
+@media only screen and (max-width: 767px) {
+  .progressbar li span {
+    max-width: 90px;
+    text-align: center;
+  }
 }
 
 .num {

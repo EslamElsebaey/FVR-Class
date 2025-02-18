@@ -117,8 +117,12 @@
   // white-space: nowrap;
   font-size: 14px;
   color: #000;
-  max-width: 90px;
-  text-align: center;
+
+  @include max-768 {
+    max-width: 90px;
+    text-align: center;
+  }
+
   // @include max-768 {
   //   font-size: 13px;
   // }
