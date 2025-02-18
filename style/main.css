@@ -2153,6 +2153,11 @@ ol.breadcrumb li {
   grid-template-columns: 1fr 1fr;
   row-gap: 14px;
 }
+@media only screen and (max-width: 450px) {
+  .radio-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
 
 .input-holder .radio-label,
 .input-holder .checkbox-label {
@@ -2234,7 +2239,6 @@ ol.breadcrumb li {
 .input-holder .checkbox-label .checkmark::after {
   content: "\f00c";
   position: absolute;
-  margin-top: 1px;
   font-family: "Font Awesome 6 Pro";
   display: none;
   font-size: 11px;

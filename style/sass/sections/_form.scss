@@ -247,6 +247,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 14px;
+  @include max-450 {
+    grid-template-columns: 1fr;
+  }
 }
 .input-holder .radio-label,
 .input-holder .checkbox-label {
@@ -319,10 +322,8 @@
     align-items: center;
     justify-content: center;
     &::after {
-      // content: "";
       content: "\f00c";
       position: absolute;
-      margin-top: 1px;
       font-family: "Font Awesome 6 Pro";
       display: none;
       font-size: 11px;
