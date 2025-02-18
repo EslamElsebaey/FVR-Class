@@ -2159,6 +2159,12 @@ ol.breadcrumb li {
   }
 }
 
+@media only screen and (max-width: 450px) {
+  .gender-radio-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .input-holder .radio-label,
 .input-holder .checkbox-label {
   font-weight: 400;

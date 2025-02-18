@@ -93,11 +93,10 @@
   text-align: center;
   transition: all ease-in-out 0.2s;
   &:hover {
-   background-color: rgba($color: $main-color, $alpha: 0.8);
+    background-color: rgba($color: $main-color, $alpha: 0.8);
     color: #fff;
   }
 }
-
 
 // Form pages
 .form-page-sec {
@@ -106,7 +105,7 @@
     margin-top: 60px;
   }
   .forget-pass-txt {
-     font-size: 14px;
+    font-size: 14px;
     line-height: 1.57;
     color: #000000;
     margin: 0;
@@ -116,7 +115,6 @@
       color: $main-color;
     }
   }
-
 }
 
 .login-form,
@@ -144,9 +142,9 @@
   text-align: center;
 }
 .form-title {
-   font-size: 24px;
-   font-weight: 800;
-    line-height: 1.66;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.66;
   color: #000000;
   text-align: center;
   @include max-768 {
@@ -155,9 +153,9 @@
   }
 }
 .form-text {
-   font-size: 16px;
-   text-align: center;
-    line-height: 1.56;
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.56;
   color: #000000;
   margin: 0;
 }
@@ -181,7 +179,7 @@
 .register-sec .form-copyright {
   margin-top: 0;
 }
-.register-sec .form-text{
+.register-sec .form-text {
   display: none;
 }
 .register-form #step_2 .general-btn:disabled {
@@ -209,17 +207,17 @@
     margin-bottom: 215px;
   }
 }
-#step_3{
+#step_3 {
   margin-bottom: 195px;
-   @include max-768 {
+  @include max-768 {
     margin-bottom: 215px;
   }
 }
 .form-copyright {
   padding-bottom: 40px;
   .copyright-text {
-     font-size: 12px;
-     font-weight: 600;
+    font-size: 12px;
+    font-weight: 600;
     line-height: 1.58;
     color: #787878;
     text-align: center;
@@ -231,14 +229,14 @@
 .register-form {
   // max-width: 400px;
   // margin-inline: auto;
-  .approval-text{
+  .approval-text {
     display: flex;
     align-items: center;
     gap: 3px;
   }
   .terms-anchor {
     text-decoration: underline;
-     font-size: 14px;
+    font-size: 14px;
     // line-height: 1.57;
     color: #0363f6;
   }
@@ -249,6 +247,11 @@
   row-gap: 14px;
   @include max-450 {
     grid-template-columns: 1fr;
+  }
+}
+.gender-radio-wrapper {
+  @include max-450 {
+    grid-template-columns: 1fr 1fr;
   }
 }
 .input-holder .radio-label,
@@ -439,4 +442,3 @@
   padding-inline-end: 7px;
 }
 // ***********************************************************************************************
-
