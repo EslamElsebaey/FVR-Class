@@ -1,0 +1,79 @@
+html[dir="ltr"] {
+  .mainBanner .banner-content .title {
+    line-height: 1.3;
+  }
+  .features-content .features-list li {
+    line-height: 1.5;
+  }
+  .copyright .copyright-text {
+    text-align: start;
+  }
+  .footer-items {
+    justify-content: flex-end;
+  }
+  // .footer .footer-bg{
+  //   left: 0;
+  // }
+  .faq-arrow,
+  .goback-arrow {
+    transform: rotate(180deg);
+  }
+  .back-anchor::after,
+  .terms-privacy-wrapper .nav-list li::before {
+    transform: rotate(180deg);
+  }
+  .user-menu .menu-anchor::after {
+    content: "\f054";
+  }
+  .user-menu .menu-anchor.active::after {
+    transform: rotate(90deg);
+  }
+  .general-box .box-text {
+    line-height: 1.6;
+  }
+  .review-box .review-text {
+    line-height: 1.7;
+  }
+  .faq-item .faq-answer {
+    line-height: 1.8;
+  }
+  .features-content .features-list li i {
+    margin-top: 2px;
+  }
+  @include max-768 {
+    .cta-box .cta-text {
+      line-height: 1.5;
+    }
+    .copyright .copyright-text {
+      text-align: center;
+    }
+    .main-text,
+    .review-box .review-text {
+      line-height: 1.65;
+    }
+    .general-box .box-title {
+      line-height: 1.35;
+    }
+    .faq-item .faq-question {
+      line-height: 1.6;
+    }
+    .features-content .features-list li i {
+      margin-top: 3px;
+    }
+    .faq-item .faq-arrow{
+      margin-top: 0;
+    }
+    .contact-form-content .title{
+      line-height: 1.55;
+    }
+    .form-text{
+      line-height: 1.5;
+    }
+    .success-content .success-title{
+      line-height: 1.5;
+    }
+    // .form-header .register-anchor{
+    //   padding-inline: 15px;
+    // }
+  }
+}
