@@ -810,6 +810,9 @@ ol.breadcrumb li {
   .form-header .lang-type {
     display: none;
   }
+  .form-header .icon-text i {
+    font-size: 18px;
+  }
   .form-header .logo img {
     width: 160px;
   }
