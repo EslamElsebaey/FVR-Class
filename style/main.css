@@ -509,6 +509,12 @@ ol.breadcrumb li {
   }
 }
 
+@media only screen and (max-width: 370px) {
+  .myaccount-anchor {
+    padding-inline: 12px;
+  }
+}
+
 .form-header .back-anchor {
   gap: 20px;
 }
@@ -607,6 +613,11 @@ ol.breadcrumb li {
 @media only screen and (max-width: 991px) {
   .control-section .lang {
     display: none;
+  }
+}
+@media only screen and (max-width: 370px) {
+  .control-section {
+    gap: 15px;
   }
 }
 

@@ -71,6 +71,11 @@
     min-width: 105px;
   }
 }
+.myaccount-anchor {
+  @include max-370 {
+    padding-inline: 12px;
+  }
+}
 
 .form-header .back-anchor {
   gap: 20px;
@@ -169,6 +174,9 @@
     .lang {
       display: none;
     }
+  }
+  @include max-370 {
+    gap: 15px;
   }
 }
 
@@ -381,19 +389,19 @@
     .lang-type {
       display: none;
     }
-    .icon-text i{
+    .icon-text i {
       font-size: 18px;
     }
     .logo img {
       width: 160px;
     }
-     .back-anchor{
+    .back-anchor {
       gap: 10px;
       min-width: 100px;
     }
   }
-  @include max-370{
-     .register-anchor{
+  @include max-370 {
+    .register-anchor {
       padding-inline: 12px;
       min-width: 105px;
       font-size: 13px;
