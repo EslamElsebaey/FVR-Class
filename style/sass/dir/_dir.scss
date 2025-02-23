@@ -86,4 +86,10 @@ html[dir="ltr"] {
     //   padding-inline: 12px;
     // }
   }
+
+  @include max-370{
+    .form-header .register-anchor{
+      padding-inline: 10px;
+    }
+  }
 }
