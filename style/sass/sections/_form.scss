@@ -119,7 +119,8 @@
 
 .login-form,
 .forget-pass-form,
-.reset-pass-form {
+.reset-pass-form,
+.code-verification-form {
   max-width: 400px;
   margin-inline: auto;
 }
@@ -352,6 +353,22 @@
     border-radius: 3px;
     background-color: transparent;
     border: 1px solid #dee1e6;
+  }
+}
+
+.code-verification-form {
+  .verfiy-cont {
+    margin-bottom: 30px;
+  }
+  .btn-wrapper {
+    justify-content: center;
+    .general-btn {
+      min-width: 248px;
+      &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
   }
 }
 

@@ -1,16 +1,11 @@
 // General Table
 .general-table {
   width: 100%;
-  //   .table {
-  //     --bs-table-striped-bg: #edf3f8;
-  //     margin-bottom: 0;
-  //     --bs-table-border-color: #fff;
-  //   }
   .table {
     --bs-table-bg: #fff;
     table-layout: fixed;
     margin: 0;
-    border-color: #ececec;
+    border: none;
     @include max-768 {
       table-layout: auto;
       th[colspan="2"],
@@ -31,24 +26,37 @@
   &.table-responsive::-webkit-scrollbar {
     display: none;
   }
-  .table th {
-    color: #fff;
-    background-color: #0363f6;
+  .table {
+    tbody,
+    td,
+    tfoot,
+    th,
+    tr {
+      border-bottom: 1px solid #ececec;
+    }
+    th,
+    thead tr {
+      color: #fff;
+      background-color: #0363f6;
+    }
+  }
+
+  .table > thead {
+    border: none;
+    tr {
+      border: none;
+    }
   }
   .table th,
   .table td {
     border: none;
     box-shadow: none;
-    // padding-inline-start: 20px;
     padding-block: 13px;
     text-align: center;
-    // min-width: 207px;
     height: 52px;
     vertical-align: middle;
     @include max-768 {
-      //   min-width: 170px;
       padding-inline-start: unset;
-      //   padding: 13px 15px;
       height: auto;
     }
   }
@@ -77,44 +85,6 @@
     }
   }
   .table {
-    // th:first-of-type {
-    //   min-width: 118px;
-    //   @include max-768{
-    //     min-width: 90px;
-    //   }
-    // }
-    // th:nth-of-type(2){
-    //   min-width: 148px;
-    //   @include max-768{
-    //     min-width: 120px;
-    //   }
-    // }
-    // th:nth-of-type(3){
-    //   min-width: 141px;
-    //    @include max-768{
-    //     min-width: 120px;
-    //   }
-    // }
-    //  th:nth-of-type(4){
-    //   min-width: 135px;
-    //    @include max-768{
-    //     min-width: 100px;
-    //   }
-    // }
-    //   th:nth-of-type(5) , th:nth-of-type(6){
-    //   min-width: 76px;
-    // }
-    //    th:nth-of-type(7){
-    //   min-width: 85px;
-    // }
-    //   th:nth-of-type(8){
-    //   min-width: 67px;
-    // }
-
-    // th:nth-child(-n + 4),
-    // td:nth-child(-n + 4) {
-    //   text-align: start;
-    // }
     td,
     th {
       text-align: start;
@@ -122,21 +92,14 @@
         padding-inline-start: 30px;
       }
     }
-    // td , th {
-    //     &:nth-of-type(2) ,&:nth-of-type(3) {
-    //         width: 148px;
-    //     }
-    // }
-    //  td , th {
-    //     &:nth-of-type(4) {
-    //         width: 135px;
-    //     }
-    // }
   }
 
-  //   .table-striped > tbody > tr:nth-of-type(odd) > * {
-  //     --bs-table-bg-type: #edf3f8;
-  //   }
+  .text-red {
+    text-decoration: underline;
+    font-size: 14px;
+    line-height: 1.57;
+    color: #e24a56;
+  }
 }
 
 // Class Table
@@ -239,7 +202,6 @@
 }
 
 // Class Group History Table
-
 .class-group-history-table {
   .table {
     table-layout: auto;
@@ -380,16 +342,237 @@
   color: $main-color;
 }
 
-
 // Points history page table
 
-.points-history-page-table{
-  .table{
-    td[colspan="5"] , th[colspan="5"] {
+.points-history-page-table {
+  .table {
+    td[colspan="5"],
+    th[colspan="5"] {
       min-width: 250px;
     }
-     th[colspan="2"],  td[colspan="2"]{
+    th[colspan="2"],
+    td[colspan="2"] {
       min-width: 100px;
+    }
+  }
+}
+
+// Challenges history page table
+.challenges-history-page-table {
+  .table {
+    table-layout: auto;
+    td,
+    th {
+      &:first-of-type {
+        min-width: 128px;
+        @include max-768 {
+          min-width: 100px;
+        }
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(2) {
+        min-width: 205px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(3) {
+        width: 100%;
+        @include max-768 {
+          min-width: 960px;
+        }
+      }
+    }
+  }
+}
+
+// Students Wheel History Page
+
+.studentsWheelHistory-page-table {
+  .table {
+    table-layout: auto;
+    td,
+    th {
+      &:first-of-type {
+        min-width: 128px;
+        @include max-768 {
+          min-width: 100px;
+        }
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(2) {
+        min-width: 205px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(3) {
+        min-width: 250px;
+        @include max-768 {
+          min-width: 150px;
+        }
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(4) {
+        width: 100%;
+        @include max-768 {
+          min-width: 500px;
+        }
+      }
+    }
+  }
+}
+
+// Ranks Table
+
+.ranks-table {
+  .table {
+    table-layout: auto;
+    td,
+    th {
+      &:first-of-type {
+        min-width: 78px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(2) {
+        min-width: 153px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(3) {
+        min-width: 160px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(4) {
+        min-width: 102px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(5) {
+        min-width: 112px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(6) {
+        min-width: 110px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(7) {
+        min-width: 76px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(8) {
+        min-width: 57px;
+      }
+    }
+  }
+}
+
+.rank-rewards-table {
+  .table {
+    table-layout: auto;
+    td,
+    th {
+      &:first-of-type {
+        min-width: 128px;
+        @include max-768 {
+          min-width: 100px;
+        }
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(2) {
+        min-width: 205px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(3) {
+        width: 100%;
+        @include max-768 {
+          min-width: 300px;
+        }
+      }
+    }
+  }
+}
+
+.rank-history-table {
+  .table {
+    table-layout: auto;
+    td,
+    th {
+      &:first-of-type {
+        min-width: 78px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(2) {
+        min-width: 155px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(3) {
+        min-width: 151px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(4) {
+        min-width: 110px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(5) {
+        min-width: 146px;
+      }
+    }
+  }
+}
+
+.edit-rank-modal-table {
+  margin-top: 20px;
+  margin-bottom: 35px;
+  .table {
+    table-layout: auto;
+    td,
+    th {
+      &:first-of-type {
+        min-width: 68px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(2) {
+        min-width: 192px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(3) {
+        min-width: 70px;
+      }
     }
   }
 }

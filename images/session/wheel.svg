@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 452.93 487.8">
+  <!-- Generator: Adobe Illustrator 29.2.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 116)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #0363f6;
+      }
+
+      .st1 {
+        fill: #024fc5;
+      }
+
+      .st2 {
+        opacity: .2;
+      }
+
+      .st3 {
+        fill: none;
+      }
+
+      .st4 {
+        clip-path: url(#clippath-1);
+      }
+
+      .st5 {
+        clip-path: url(#clippath-3);
+      }
+
+      .st6 {
+        fill: #f7d131;
+      }
+
+      .st7 {
+        clip-path: url(#clippath-2);
+      }
+
+      .st8 {
+        opacity: .1;
+      }
+
+      .st9 {
+        clip-path: url(#clippath);
+      }
+      #Path_543{
+        position : relative ; 
+        z-index : 10;
+      }
+
+      .st531{
+            fill: #0363f6;
+    <!-- stroke-width: 10px; -->
+    <!-- stroke: #0363f6; -->
+    
+    }
+    </style>
+    <clipPath id="clippath">
+      <rect class="st3" x=".72" y="454.37" width="452.2" height="33.43"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="st3" x="163.13" y="371.18" width="121.79" height="21.54"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="st3" x="186.27" y="36.39" width="70.37" height="11.47"/>
+    </clipPath>
+    <clipPath id="clippath-3">
+      <rect class="st3" x="222.27" y="57.55" width="18.97" height="58.91"/>
+    </clipPath>
+  </defs>
+  <g id="Group_14982" class="st8">
+    <g id="Group_14981">
+      <g class="st9">
+        <g id="Group_14980">
+          <path id="Path_529" d="M452.92,471.09c0,9.23-101.23,16.71-226.1,16.71S.72,480.32.72,471.09s101.23-16.71,226.1-16.71,226.1,7.48,226.1,16.71"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path id="Path_530" class="st0" d="M290.37,447.19h-132.16L188.66,13.86C189.21,6.05,195.7,0,203.53,0h35.5c7.74,0,14.19,5.93,14.84,13.65l36.49,433.54Z"/>
+  <path id="Path_531" class="st531" d="M229.33,382.35c-.64.02-1.28.03-1.92.05-93.53,1.78-170.79-72.6-172.56-166.13-.85-44.85,16.12-88.21,47.2-120.56l.19-.2c30.66-32,72.7-50.63,117.01-51.85.57-.02,1.14-.03,1.71-.04,93.53-1.9,170.88,72.38,172.78,165.91.91,45.02-16.14,88.56-47.39,120.98l-.21.22c-30.65,31.87-72.6,50.41-116.8,51.63h0"/>
+  <rect id="Rectangle_883" class="st1" x="121.34" y="447.19" width="205.13" height="14.99"/>
+  <g id="Group_14985" class="st2">
+    <g id="Group_14984">
+      <g class="st4">
+        <g id="Group_14983">
+          <path id="Path_541" d="M163.49,371.19s51.27,26.44,120.51.44l.91,10.8s-67.98,26.37-121.79-5.3l.36-5.94Z"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g id="Group_14988" class="st2">
+    <g id="Group_14987">
+      <g class="st7">
+        <g id="Group_14986">
+          <path id="Path_542" d="M186.27,47.86s39.11-8.96,70.37-1.19l-.7-8.25s-35.56-6.43-69.27,3.61l-.41,5.84Z"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <!-- <path id="Path_543" class="st6" d="M236.06,17.03h0c6.54,5.31,9.38,13.95,7.25,22.11l-8.64,33.08-9.89,37.85c-.33,1.24-1.6,1.98-2.84,1.66-.81-.21-1.44-.85-1.66-1.66l-9.89-37.85-8.64-33.08c-3-11.48,3.88-23.21,15.36-26.21,6.61-1.73,13.65-.2,18.95,4.1"/> -->
+  <path id="Path_544" class="st0" d="M228.5,27.3c0,3.3-2.68,5.98-5.98,5.98s-5.98-2.68-5.98-5.98,2.68-5.98,5.98-5.98h0c3.3,0,5.98,2.68,5.98,5.98"/>
+  <g id="Group_14991" class="st8">
+    <g id="Group_14990">
+      <g class="st5">
+        <g id="Group_14989">
+          <!-- <path id="Path_545" d="M238.49,57.55l-13.72,52.52c-.32,1.1-1.37,1.82-2.51,1.74l.09,4.65s4.84-.78,6.7-4.65,12.18-53.99,12.18-53.99l-2.74-.27Z"/> -->
+        </g>
+      </g>
+    </g>
+  </g>
+  <rect id="Rectangle_887" class="st3" x=".72" y="0" width="452.2" height="487.8"/>
+  <rect id="Rectangle_888" class="st3" x=".72" y="0" width="452.2" height="487.8"/>
+</svg>

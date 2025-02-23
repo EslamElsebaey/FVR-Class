@@ -1,0 +1,5 @@
+.ranks-parent {
+  @include max-992 {
+    display: grid;
+  }
+}

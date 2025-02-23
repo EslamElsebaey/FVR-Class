@@ -51,7 +51,7 @@
   }
 }
 .myaccount-anchor,
-.back-anchor {
+.form-header .back-anchor {
   min-width: 110px;
   background-color: rgba($color: $main-color, $alpha: 0.1);
   color: $main-color;
@@ -72,13 +72,7 @@
   }
 }
 
-.login-anchor {
-  &::before {
-    font-weight: 300;
-  }
-}
-
-.back-anchor {
+.form-header .back-anchor {
   gap: 20px;
   &::before {
     display: none;
@@ -98,6 +92,12 @@
   }
   @include max-768 {
     gap: 15px;
+  }
+}
+
+.login-anchor {
+  &::before {
+    font-weight: 300;
   }
 }
 
@@ -171,6 +171,7 @@
     }
   }
 }
+
 
 .close-language-wrapper {
   @include min-768 {
@@ -317,7 +318,9 @@
 
 .form-header {
   .register-anchor {
-    min-width: 133px;
+    min-width: 120px;
+    padding-inline: 14px;
+    font-size: 13px;
     &::before {
       font-weight: 300;
     }
@@ -326,8 +329,8 @@
     }
   }
   .register-text {
-     font-size: 14px;
-     font-weight: 600;
+    font-size: 14px;
+    font-weight: 600;
     line-height: 1.57;
     color: #000000;
     @include max-768 {
@@ -356,5 +359,35 @@
   .logo-circle {
     display: block;
     width: 57px;
+  }
+}
+
+
+
+.form-header {
+  @include max-992 {
+    .control-section {
+      gap: 12px;
+      .lang {
+        display: flex;
+      }
+    }
+  }
+  @include max-450 {
+    .logo img {
+      width: 160px;
+    }
+  }
+  @include max-400 {
+    .logo img {
+      width: 140px;
+    }
+    .icon-text {
+      column-gap: 3px;
+    }
+    .lang-type{
+      gap: 3px;
+      font-size: 12px;
+    }
   }
 }

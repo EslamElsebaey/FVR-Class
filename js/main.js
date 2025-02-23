@@ -12,16 +12,14 @@ $(document).ready(function () {
       .siblings(".sub-menu")
       .slideUp();
   });
-  // if($(window).width() < 992) {
-  //   $(".user-menu .menu-anchor").removeClass("active");
-  //   $(".user-menu .sub-menu .sub-anchor").removeClass("active");
-  //   $(".user-menu .sub-menu").css("display" , "none");
-  // }
 
   // Toggle menu in Mobile
   $(".user-nav-toggle").click(function (e) {
     $(this).parents(".user-nav").toggleClass("active");
   });
+
+
+
 
   // ************************************************************************************************
   // Change color of selected option  to black
@@ -95,7 +93,7 @@ $(document).ready(function () {
 
   // ************************************************************************************************
 
-  //  Modals
+  //  MODALS
 
   // Classes Modals
   $(".edit-class-btn").on("click", function () {
@@ -108,6 +106,14 @@ $(document).ready(function () {
     $(".copy_class_modal").fadeIn();
   });
 
+  // Class points & attendance History
+  $(".view-attendance-btn").on("click", function () {
+    $(".attendance_history_modal").fadeIn();
+  });
+  $(".view-points-btn").on("click", function () {
+    $(".points_history_modal").fadeIn();
+  });
+
   // Students Modals
   $(".add-student-btn").on("click", function () {
     $(".add_student_modal").fadeIn();
@@ -118,14 +124,6 @@ $(document).ready(function () {
   });
   $(".delete-student-btn").on("click", function () {
     $(".delete_student_modal").fadeIn();
-  });
-
-  // History Modals
-  $(".view-attendance-btn").on("click", function () {
-    $(".attendance_history_modal").fadeIn();
-  });
-  $(".view-points-btn").on("click", function () {
-    $(".points_history_modal").fadeIn();
   });
 
   // Student List Modals
@@ -146,7 +144,7 @@ $(document).ready(function () {
     $(".images_eduContent_modal").fadeIn();
   });
 
-  // Attendances & Absences
+  // Session Attendances & Absences
 
   $(".attendanceAbsence-page .student-card-btn").on("click", function () {
     $(".confirm_attendanceAbsence_modal").fadeIn();
@@ -185,21 +183,22 @@ $(document).ready(function () {
 
   // Common in Add & Deduct Points Modal
   $(
-    ".add_points_success_modal .proceed-btn , .deduct_points_success_modal .proceed-btn"
+    ".add_points_success_modal .proceed-btn , .deduct_points_success_modal .proceed-btn "
   ).on("click", function () {
     $(".general_modal").fadeOut();
     $("body").removeClass("overflowHidden");
     $(".modal_box").removeClass("transition-box");
     $(".student-card-btn input").prop("checked", false);
+    $(".group-card-btn input").prop("checked", false);
   });
 
-  // Finish Session
+  // Finish Session Modal
 
   $(".finish-session-btn").on("click", function () {
     $(".finish_session_modal").fadeIn();
   });
 
-  // Create Groups
+  // Create Groups Modal
   $(".add-groups-btn").on("click", function () {
     $(".create_groups_modal").fadeIn();
   });
@@ -217,8 +216,39 @@ $(document).ready(function () {
     }
   });
 
+  // Challenge Modal
+
+  $(".challenge-number-btn:has(input:not(:disabled))").on("click", function () {
+    $(".challenge_modal").fadeIn();
+  });
+
+  $(
+    ".challenge_modal , .challenge_modal .close_modal , .challenge_modal .proceed-btn"
+  ).on("click", function () {
+    $(".general_modal").fadeOut();
+    $("body").removeClass("overflowHidden");
+    $(".modal_box").removeClass("transition-box");
+    $(".challenge-number-btn input").prop("checked", false);
+  });
+
+  // Ranks Modal
+  $(".rank-rewards-btn").on("click", function () {
+    $(".rank_rewards_modal").fadeIn();
+  });
+  $(".rank-history-btn").on("click", function () {
+    $(".rank_history_modal").fadeIn();
+  });
+
+  $(".edit-rank-btn").on("click", function () {
+    $(".edit_rank_modal").fadeIn();
+  });
+
+  $(".delete-rank-btn").on("click", function () {
+    $(".delete_rank_modal").fadeIn();
+  });
+
   // ////////////////////////////////////////////////////////////////////
-  //  Common In All Modals
+  //  Common in All Modals
   $(".modal_btn").on("click", function () {
     $(".modal_box").addClass("transition-box");
     $("body").addClass("overflowHidden");
@@ -324,6 +354,127 @@ $(document).ready(function () {
   //     });
   //   });
   // }
+
+  // ***********************************************************************************************
+
+  // Countdown
+
+  let timer = document.querySelector(".timer");
+
+  if (timer) {
+    let stopTimerBtn = document.querySelector(".stop-timer-btn");
+    let startTimerBtn = document.querySelector(".start-timer-btn");
+    let minutesLeft = 0;
+    let minutesRight = 0;
+    let secondsRight = 0;
+    let secondsLeft = 0;
+
+    // Function to update the display
+    function updateDisplay() {
+      document.getElementById("minutesLeft").textContent = minutesLeft;
+      document.getElementById("minutesRight").textContent = minutesRight;
+      document.getElementById("secondsLeft").textContent = secondsLeft;
+      document.getElementById("secondsRight").textContent = secondsRight;
+    }
+
+    // Function to handle button clicks
+    function handleButtonClick(event) {
+      const button = event.currentTarget;
+      const type = button.closest(".time-control").classList[1];
+      const direction = button.classList.contains("up") ? 1 : -1;
+      if (type.includes("minutes-left")) {
+        minutesLeft = Math.max(0, Math.min(5, minutesLeft + direction));
+      } else if (type.includes("minutes-right")) {
+        minutesRight = Math.max(0, Math.min(9, minutesRight + direction));
+      } else if (type.includes("seconds-left")) {
+        secondsLeft = Math.max(0, Math.min(5, secondsLeft + direction));
+      } else if (type.includes("seconds-right")) {
+        secondsRight = Math.max(0, Math.min(9, secondsRight + direction));
+      }
+      updateDisplay();
+    }
+
+    // click on arrow button
+    document.querySelectorAll(".time-control .arrow").forEach((button) => {
+      button.addEventListener("click", handleButtonClick);
+    });
+
+    //  start timer Function
+    function startTimer() {
+      let totalSeconds =
+        (minutesLeft * 10 + minutesRight) * 60 +
+        (secondsLeft * 10 + secondsRight);
+      if (totalSeconds <= 0) return; // Prevent starting if timer is 00:00
+      document
+        .querySelectorAll(".countdown-parent .number, .countdown-parent .colon")
+        .forEach((element) => element.classList.add("blue-color"));
+      document
+        .querySelectorAll(".time-control .arrow")
+        .forEach((element) => element.classList.add("d-none"));
+
+      stopTimerBtn.style.display = "flex";
+      startTimerBtn.style.display = "none";
+      updateDisplay();
+
+      let interval = setInterval(() => {
+        if (totalSeconds <= 0) {
+          clearInterval(interval);
+          document
+            .querySelectorAll(
+              ".countdown-parent .number, .countdown-parent .colon"
+            )
+            .forEach((element) => element.classList.remove("blue-color"));
+          document
+            .querySelectorAll(".time-control .arrow")
+            .forEach((element) => element.classList.remove("d-none"));
+          stopTimerBtn.style.display = "none";
+          startTimerBtn.style.display = "flex";
+        } else {
+          totalSeconds--;
+          const minutes = Math.floor(totalSeconds / 60);
+          const seconds = totalSeconds % 60;
+          minutesLeft = Math.floor(minutes / 10);
+          minutesRight = minutes % 10;
+          secondsLeft = Math.floor(seconds / 10);
+          secondsRight = seconds % 10;
+          updateDisplay();
+        }
+      }, 1000);
+
+      stopTimerBtn.addEventListener("click", function () {
+        clearInterval(interval);
+        document
+          .querySelectorAll(
+            ".countdown-parent .number, .countdown-parent .colon"
+          )
+          .forEach((element) => element.classList.remove("blue-color"));
+        document
+          .querySelectorAll(".time-control .arrow")
+          .forEach((element) => element.classList.remove("d-none"));
+        stopTimerBtn.style.display = "none";
+        startTimerBtn.style.display = "flex";
+      });
+    }
+
+    startTimerBtn.addEventListener("click", startTimer);
+
+    updateDisplay();
+  }
+
+  // ***********************************************************************************************
+
+  // Wheel
+
+  let currentAngle = 0;
+
+  $(".wheel-parent .rotate-btn").on("click", function () {
+    let randomDegree = Math.floor(Math.random() * 360) + 250;
+    currentAngle += randomDegree;
+    $(".wheel-parent .circle-wrapper").css(
+      "transform",
+      `translateX(-50%) rotate(${currentAngle}deg)`
+    );
+  });
 
   // ***********************************************************************************************
 

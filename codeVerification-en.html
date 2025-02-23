@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8" />
@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="lib/intel-tel-input/css/intlTelInput.min.css">
     <link rel="stylesheet" href="lib/select2/css/select2.min.css">
-    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="lib/swiperjs/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="style/main.css" />
-    <title>استعادة كلمة المرور</title>
+    <title> Enter verification code</title>
 </head>
 
 <body>
@@ -33,23 +33,23 @@
     <header class="header form-header">
         <div class="container-fluid">
             <div class="header-content">
-                <a href="index.html" class="logo">
+                <a href="index-en.html" class="logo">
                     <img src="images/logo-light.png" alt="logo">
                 </a>
                 <div class="control-section">
                     <div class="lang">
                         <div class="icon-text">
                             <i class="fa-light fa-globe"></i>
-                            <span class="lang-type">العربية</span>
+                            <span class="lang-type">English</span>
                         </div>
                         <div class="lang-details">
                             <ul>
-                                <li><a href="forgetPassword-en.html">English</a></li>
+                                <li><a href="codeVerification.html">العربية</a></li>
                             </ul>
                         </div>
                     </div>
-                    <a href="login.html" class="general-anchor back-anchor">
-                        رجوع
+                    <a href="forgetPassword-en.html" class="general-anchor back-anchor">
+                        Back
                     </a>
                 </div>
             </div>
@@ -63,28 +63,36 @@
             <div class="form-content">
                 <div class="form-title-text">
                     <h3 class="form-title">
-                        استعادة كلمة المرور
+                        Enter verification code
                     </h3>
                     <p class="form-text">
-                        ادخل رقم جوالك المسجل لإستقبال كود التحقق
+                        Add verification code sent to your mobile phone
                     </p>
                 </div>
-                <form action="" class="forget-pass-form">
-                    <div class="input-holder">
-                        <label class="label">
-                            رقم الجوال
-                        </label>
-                        <input class="input" placeholder="5xxxxxxxx" type="tel">
+                <form action="" class="code-verification-form">
+                    <div class="verfiy-cont">
+                        <div class="digit-group otp-form">
+                            <input type="text" name="opt-field[]" class="otp-field" maxlength="1" />
+                            <input type="text" disabled name="opt-field[]" class="otp-field" maxlength="1" />
+                            <input type="text" disabled name="opt-field[]" class="otp-field" maxlength="1" />
+                            <input type="text" disabled name="opt-field[]" class="otp-field" maxlength="1" />
+                            <input type="text" class="otp-value" hidden>
+                        </div>
+                        <div class="countDown-content">
+                            <span class="counter-timer">
+                                <span id="counter"></span>
+                            </span>
+                        </div>
                     </div>
                     <div class="btn-wrapper">
-                        <a href="codeVerification.html" class="general-btn  w-100">
-                            ارسال
+                        <a href="resetPassword.html" class="general-btn disabled">
+                            Confirm
                         </a>
                     </div>
                 </form>
                 <div class="form-copyright">
                     <p class="copyright-text">
-                        فصل الواقع الإفتراضي المستقبلي ٢٠٢٥ ©
+                        © Future Virtual Reality Class 2025
                     </p>
                 </div>
             </div>
@@ -105,6 +113,7 @@
     <script src="lib/select2/js/select2.min.js"></script>
     <script src="lib/intel-tel-input/js/intlTelInputWithUtils.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/form-wizard.js"></script>
     <script src="js/main.js"></script>
 
 </body>
