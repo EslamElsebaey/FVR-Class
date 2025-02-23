@@ -751,8 +751,7 @@ ol.breadcrumb li {
 
 .form-header .register-anchor {
   min-width: 120px;
-  padding-inline: 14px;
-  font-size: 13px;
+  padding-inline: 15px;
 }
 .form-header .register-anchor::before {
   font-weight: 300;
@@ -794,30 +793,25 @@ ol.breadcrumb li {
   width: 57px;
 }
 
+.form-header .lang .lang-details {
+  inset-inline-start: unset;
+  left: 50%;
+  transform: translateX(-50%);
+}
 @media only screen and (max-width: 991px) {
-  .form-header .control-section {
-    gap: 12px;
-  }
   .form-header .control-section .lang {
     display: flex;
   }
 }
-@media only screen and (max-width: 450px) {
-  .form-header .logo img {
-    width: 160px;
-  }
-}
-@media only screen and (max-width: 400px) {
-  .form-header .logo img {
-    width: 140px;
-  }
-  .form-header .icon-text {
-    -moz-column-gap: 3px;
-         column-gap: 3px;
+@media only screen and (max-width: 767px) {
+  .form-header .control-section {
+    gap: 15px;
   }
   .form-header .lang-type {
-    gap: 3px;
-    font-size: 12px;
+    display: none;
+  }
+  .form-header .logo img {
+    width: 160px;
   }
 }
 
@@ -5100,8 +5094,5 @@ html[dir=ltr] .copyright .tasawk-text a {
   }
   html[dir=ltr] .progressbar li span {
     line-height: 1.3;
-  }
-  html[dir=ltr] .form-header .register-anchor {
-    padding-inline: 12px;
   }
 }/*# sourceMappingURL=main.css.map */

@@ -172,7 +172,6 @@
   }
 }
 
-
 .close-language-wrapper {
   @include min-768 {
     display: none;
@@ -319,8 +318,8 @@
 .form-header {
   .register-anchor {
     min-width: 120px;
-    padding-inline: 14px;
-    font-size: 13px;
+    padding-inline: 15px;
+    // font-size: 13px;
     &::before {
       font-weight: 300;
     }
@@ -362,32 +361,28 @@
   }
 }
 
-
-
 .form-header {
+  .lang .lang-details {
+    inset-inline-start: unset;
+    left: 50%;
+    transform: translateX(-50%);
+  }
   @include max-992 {
     .control-section {
-      gap: 12px;
       .lang {
         display: flex;
       }
     }
   }
-  @include max-450 {
+  @include max-768 {
+    .control-section {
+      gap: 15px;
+    }
+    .lang-type {
+      display: none;
+    }
     .logo img {
       width: 160px;
-    }
-  }
-  @include max-400 {
-    .logo img {
-      width: 140px;
-    }
-    .icon-text {
-      column-gap: 3px;
-    }
-    .lang-type{
-      gap: 3px;
-      font-size: 12px;
     }
   }
 }
