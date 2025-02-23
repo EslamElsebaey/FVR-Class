@@ -387,5 +387,17 @@
     .logo img {
       width: 160px;
     }
+     .back-anchor{
+      gap: 10px;
+      min-width: 100px;
+    }
+  }
+  @include max-370{
+     .register-anchor{
+      padding-inline: 12px;
+      min-width: 105px;
+      font-size: 13px;
+      gap: 5px;
+    }
   }
 }
