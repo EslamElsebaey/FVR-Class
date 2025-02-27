@@ -158,3 +158,46 @@
     padding-bottom: 50px;
   }
 }
+
+
+.add-common-form {
+  .btn-wrapper {
+    gap: 10px;
+    margin-top: 5px;
+  }
+  .general-btn {
+    padding-inline: 40px;
+    min-width: 116px;
+  }
+  .outline-btn {
+    min-width: 158px;
+    background-color: transparent;
+    color: $main-color;
+    border: 1px solid $main-color;
+    &:hover {
+      background-color: $main-color;
+      color: #fff;
+    }
+  }
+}
+
+
+.addingPointsReasons-parent , .deductingPointsReasons-parent {
+  @include max-992 {
+    display: grid;
+  }
+}
+
+
+.challenges-parent{
+    @include max-768{
+        display: grid;
+    }
+}
+
+
+.add-adding-reason-form , .add-deducting-reason-form , .add-new-reward-form , .add-new-challenge-form , .edit-challenge-form , .edit-reward-form , .edit-adding-reason-form , .edit-deducting-reason-form {
+  .input-holder .textarea {
+    height: 150px;
+  }
+}

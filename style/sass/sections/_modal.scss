@@ -46,6 +46,14 @@
       width: calc(100% - 40px); 
     }
   }
+
+  .modal_body{
+    @include max-768 {
+      form:has(.table){
+        display: grid;
+      }
+    }
+  }
   .modal_upper {
     display: flex;
     flex-direction: column;
@@ -55,7 +63,7 @@
   }
   .modal_title {
     text-align: center;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 1.66;
     font-weight: 700;
     color: #000000;

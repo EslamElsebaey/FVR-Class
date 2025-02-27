@@ -91,6 +91,11 @@
       &:nth-of-type(1) {
         padding-inline-start: 30px;
       }
+      &:last-of-type {
+        @include min-768 {
+          padding-inline-end: 25px;
+        }
+      }
     }
   }
 
@@ -109,13 +114,13 @@
     td,
     th {
       &:first-of-type {
-        min-width: 78px;
+        min-width: 70px;
       }
     }
     td,
     th {
       &:nth-of-type(2) {
-        min-width: 122px;
+        min-width: 117px;
       }
     }
     td,
@@ -145,14 +150,14 @@
     td,
     th {
       &:nth-of-type(7) {
-        min-width: 106px;
+        min-width: 103px;
       }
     }
     td,
     th {
       &:nth-of-type(8),
       &:nth-of-type(9) {
-        min-width: 57px;
+        min-width: 65px;
       }
     }
   }
@@ -265,7 +270,7 @@
   .table {
     th[colspan="2"],
     td[colspan="2"] {
-      min-width: 150px;
+      min-width: 180px;
     }
   }
 }
@@ -412,7 +417,7 @@
     th {
       &:nth-of-type(3) {
         min-width: 250px;
-        @include max-768 {
+        @include max-992 {
           min-width: 150px;
         }
       }
@@ -449,7 +454,7 @@
     td,
     th {
       &:nth-of-type(3) {
-        min-width: 160px;
+        min-width: 152px;
       }
     }
     td,
@@ -479,7 +484,7 @@
     td,
     th {
       &:nth-of-type(8) {
-        min-width: 57px;
+        min-width: 65px;
       }
     }
   }
@@ -508,7 +513,7 @@
       &:nth-of-type(3) {
         width: 100%;
         @include max-768 {
-          min-width: 300px;
+          min-width: 250px;
         }
       }
     }
@@ -572,6 +577,125 @@
     th {
       &:nth-of-type(3) {
         min-width: 70px;
+      }
+    }
+  }
+}
+
+// Add New Rank Page Table
+.add-reward-table {
+  margin-bottom: 30px;
+  .table {
+    table-layout: fixed;
+    @include max-768 {
+      table-layout: auto;
+      td,
+      th {
+        &:first-of-type {
+          min-width: 75px;
+        }
+      }
+      td,
+      th {
+        &:nth-of-type(2) {
+          min-width: 200px;
+        }
+      }
+      td,
+      th {
+        &:nth-of-type(3) {
+          min-width: 85px;
+        }
+      }
+    }
+  }
+}
+
+// Adding Points Reasons Table
+
+.adding-points-reasons-table,
+.deducting-points-reasons-table,
+.challenges-table {
+  .table {
+    table-layout: fixed;
+    @include max-768 {
+      table-layout: auto;
+      td,
+      th {
+        &:first-of-type {
+          min-width: 75px;
+        }
+      }
+      td,
+      th {
+        &:nth-of-type(2) {
+          min-width: 193px;
+        }
+      }
+      td,
+      th {
+        &:nth-of-type(3) {
+          min-width: 350px;
+        }
+      }
+      td,
+      th {
+        &:nth-of-type(4),
+        &:nth-of-type(5) {
+          min-width: 80px;
+        }
+      }
+    }
+  }
+}
+
+// Rewards Table
+
+.rewards-table .table th[colspan="2"],
+.general-table .table td[colspan="2"] {
+  @include max-768 {
+    min-width: 100px;
+  }
+}
+
+.rewards-history-table {
+  .table {
+    table-layout: auto;
+    td,
+    th {
+      &:first-of-type {
+        min-width: 128px;
+        @include max-768 {
+          min-width: 100px;
+        }
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(2) {
+        min-width: 230px;
+      }
+    }
+    td,
+    th {
+      &:nth-of-type(3) {
+        width: 100%;
+        @include max-768 {
+          min-width: 250px;
+        }
+      }
+    }
+  }
+}
+
+.challenges-table {
+  .table {
+    @include max-768 {
+      td,
+      th {
+        &:nth-of-type(3) {
+          min-width: 250px;
+        }
       }
     }
   }

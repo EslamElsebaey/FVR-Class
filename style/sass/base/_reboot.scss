@@ -7,6 +7,13 @@ $main-color: #0363f6;
   box-sizing: border-box;
 }
 
+html , body{
+  scroll-behavior: auto;
+}
+:root{
+  scroll-behavior: auto;
+}
+
 body {
   font-family: "Bahij TheSansArabic";
   font-weight: 400;

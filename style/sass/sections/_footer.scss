@@ -20,7 +20,7 @@
     bottom: 0;
     left: 0;
     z-index: 5;
-    @include max-992 {
+    @include max-768 {
       display: none;
     }
   }

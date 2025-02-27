@@ -3,8 +3,8 @@ $(window).on("load", function () {
 });
 
 $(document).ready(function () {
-  // Account User Menu
-  $(".user-menu .menu-anchor").click(function () {
+  // User Menu active links
+  $(".user-menu .menu-anchor:not(.logout-btn)").click(function () {
     $(this).toggleClass("active").siblings(".sub-menu").slideToggle();
     $(".user-menu .menu-anchor")
       .not(this)
@@ -13,16 +13,13 @@ $(document).ready(function () {
       .slideUp();
   });
 
-  // Toggle menu in Mobile
+  // User Menu in Mobile
   $(".user-nav-toggle").click(function (e) {
     $(this).parents(".user-nav").toggleClass("active");
   });
 
-
-
-
   // ************************************************************************************************
-  // Change color of selected option  to black
+  // Change color of selected option in Select2 to black
   $(".myselect").on("change", function () {
     $(this)
       .siblings(".select2-container")
@@ -32,7 +29,7 @@ $(document).ready(function () {
 
   // ************************************************************************************************
 
-  // Files Inputs
+  // AddNewSession page file inputs
   const inputFile = $(".input-file");
 
   $(".add-file-btn").on("click", function (e) {
@@ -54,34 +51,15 @@ $(document).ready(function () {
           fileNameText = fileNameText.substring(0, 23) + "...";
         }
       }
-
       const fileName = $("<p>").addClass("file-name").text(fileNameText);
       $(this).closest(".file-input-wrapper").find(".file-name").remove();
       $(this).closest(".file-input-wrapper").append(fileName);
-      console.log(file);
     }
   });
 
   // ************************************************************************************************
 
-  // Fancybox
-  // Fancybox.bind("[data-fancybox='eduContent-images-gallery']", {
-  //    buttons: ["slideShow", "share", "zoom", "fullScreen", "close"],
-  // });
-  // $('[data-fancybox="eduContent-images-gallery"]').fancybox({
-
-  // });
-
-  // Fancybox.bind('[data-fancybox="eduContent-images-gallery"]', {
-  //   // Your custom options for a specific gallery
-  // });
-
-  // fancybox
-
-  // $('[data-fancybox="eduContent-images-gallery"]').fancybox({
-  //   buttons: ["slideShow", "share", "zoom", "fullScreen", "close"],
-  // });
-
+  // educationalContent Page FancyBox
   if ($("[data-fancybox='eduContent-images-gallery']").length) {
     Fancybox.bind('[data-fancybox="eduContent-images-gallery"]', {
       Carousel: {
@@ -93,7 +71,7 @@ $(document).ready(function () {
 
   // ************************************************************************************************
 
-  //  MODALS
+  //  M O D A L S
 
   // Classes Modals
   $(".edit-class-btn").on("click", function () {
@@ -106,7 +84,7 @@ $(document).ready(function () {
     $(".copy_class_modal").fadeIn();
   });
 
-  // Class points & attendance History
+  // Class (points & attendance) History
   $(".view-attendance-btn").on("click", function () {
     $(".attendance_history_modal").fadeIn();
   });
@@ -126,7 +104,7 @@ $(document).ready(function () {
     $(".delete_student_modal").fadeIn();
   });
 
-  // Student List Modals
+  // Student List Modal
   $(".view-list-btn").on("click", function () {
     $(".student_list_modal").fadeIn();
   });
@@ -162,7 +140,8 @@ $(document).ready(function () {
     $(".add_points_modal .modal_box").addClass("transition-box");
   });
 
-  $(".add_points_modal .confirm-btn").on("click", function () {
+  $(".add_points_modal .confirm-btn").on("click", function (e) {
+    e.preventDefault();
     $(".add_points_modal").fadeOut();
     $(".add_points_success_modal").fadeIn();
     $(".add_points_success_modal .modal_box").addClass("transition-box");
@@ -175,13 +154,14 @@ $(document).ready(function () {
     $(".deduct_points_modal .modal_box").addClass("transition-box");
   });
 
-  $(".deduct_points_modal .confirm-btn").on("click", function () {
+  $(".deduct_points_modal .confirm-btn").on("click", function (e) {
+    e.preventDefault();
     $(".deduct_points_modal").fadeOut();
     $(".deduct_points_success_modal").fadeIn();
     $(".deduct_points_success_modal .modal_box").addClass("transition-box");
   });
 
-  // Common in Add & Deduct Points Modal
+  // Common in (Add & Deduct) Points Modal
   $(
     ".add_points_success_modal .proceed-btn , .deduct_points_success_modal .proceed-btn "
   ).on("click", function () {
@@ -205,12 +185,12 @@ $(document).ready(function () {
 
   // Group increment and decrement counter
   $(".plus-icon").on("click", function () {
-    let currentNumber = parseInt($(".students-number").text(), 10);
+    let currentNumber = parseInt($(".students-number").text().trim(), 10);
     $(".students-number").text(currentNumber + 1);
   });
 
   $(".minus-icon").on("click", function () {
-    let currentNumber = parseInt($(".students-number").text(), 10);
+    let currentNumber = parseInt($(".students-number").text().trim(), 10);
     if (currentNumber !== 0) {
       $(".students-number").text(currentNumber - 1);
     }
@@ -247,6 +227,48 @@ $(document).ready(function () {
     $(".delete_rank_modal").fadeIn();
   });
 
+  // Delete AddingPointsReason Modal
+
+  $(".delete-adding-reason-btn").on("click", function (e) {
+    e.preventDefault();
+    $(".delete_adding_reason_modal").fadeIn();
+  });
+
+  // Delete DeductingPointsReason Modal
+
+  $(".delete-deducting-reason-btn").on("click", function (e) {
+    e.preventDefault();
+    $(".delete_deducting_reason_modal").fadeIn();
+  });
+
+  // Rewards Modal
+
+  // Rewards History Modal
+  $(".rewards-history-btn").on("click", function (e) {
+    e.preventDefault();
+    $(".rewards_history_modal").fadeIn();
+  });
+
+  // Delete Reward Modal
+  $(".delete-reward-btn").on("click", function (e) {
+    e.preventDefault();
+    $(".delete_reward_modal").fadeIn();
+  });
+
+  // Challenges Modals
+
+  // Delete Challenge Modal
+  $(".delete-challenge-btn").on("click", function (e) {
+    e.preventDefault();
+    $(".delete_challenge_modal").fadeIn();
+  });
+
+  // Log out Modal
+  $(".logout-btn").on("click", function (e) {
+    e.preventDefault();
+    $(".logout_modal").fadeIn();
+  });
+
   // ////////////////////////////////////////////////////////////////////
   //  Common in All Modals
   $(".modal_btn").on("click", function () {
@@ -254,21 +276,24 @@ $(document).ready(function () {
     $("body").addClass("overflowHidden");
   });
 
+  $(".modal_btns .outline-btn").on("click", function (e) {
+    e.preventDefault();
+  });
+
   $(".general_modal , .close_modal , .modal_btns .outline-btn").on(
     "click",
-    function () {
+    function (e) {
       $(".general_modal").fadeOut();
       $("body").removeClass("overflowHidden");
       $(".modal_box").removeClass("transition-box");
     }
   );
 
-  $(".modal_box:not(.images_eduContent_modal .modal_box) , .modal_title").on(
-    "click",
-    function (e) {
-      e.stopPropagation();
-    }
-  );
+  $(
+    ".modal_box:not(.images_eduContent_modal .modal_box) , .images_eduContent_modal .modal_title"
+  ).on("click", function (e) {
+    e.stopPropagation();
+  });
   // ************************************************************************************************
 
   //  Select2
@@ -284,40 +309,48 @@ $(document).ready(function () {
   // SWIPERS
 
   // Main Swiper
-  const mainSwiper = new Swiper(".mainBanner .swiper", {
-    loop: true,
-    autoplay: true,
-    draggable: true,
-    speed: 800,
-    pagination: {
-      el: ".mainBanner .swiper-pagination",
-      clickable: true,
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 5,
+  if ($(".mainBanner .swiper").length) {
+    const mainSwiper = new Swiper(".mainBanner .swiper", {
+      loop: true,
+      autoplay: {
+        delay: 3000, // Proper autoplay format
+        disableOnInteraction: false,
       },
-    },
-  });
+      draggable: true,
+      speed: 800,
+      pagination: {
+        el: ".mainBanner .swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 5,
+        },
+      },
+    });
+  }
 
-  // Main Swiper
-  const Reviewswiper = new Swiper(".reviews .swiper", {
-    loop: true,
-    autoplay: true,
-    draggable: true,
-    speed: 800,
-    pagination: {
-      el: ".reviews .swiper-pagination",
-      clickable: true,
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 5,
+  // Reviews Swiper
+
+  if ($(".reviews .swiper").length) {
+    const Reviewswiper = new Swiper(".reviews .swiper", {
+      loop: true,
+      autoplay: true,
+      draggable: true,
+      speed: 800,
+      pagination: {
+        el: ".reviews .swiper-pagination",
+        clickable: true,
       },
-    },
-  });
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 5,
+        },
+      },
+    });
+  }
 
   // ***********************************************************************************************
   // Faq
@@ -328,142 +361,119 @@ $(document).ready(function () {
     $(".faq-answer").not($(this).children(".faq-answer")).slideUp(300);
   });
 
-  // Inteltelinput
-  let input = $("input[type=tel]");
-  for (let i = 0; i < input.length; i++) {
-    intlTelInput(input[i], {
+  // ***********************************************************************************************
+
+
+  $("input[type=tel]").each(function () {
+    intlTelInput(this, {
       utilsScript: "utils.js",
       autoPlaceholder: "aggressive",
       separateDialCode: true,
       initialCountry: "sa",
       preferredCountries: ["sa", "kw", "ae", "bh", "om", "qa", "eg"],
     });
-  }
+  });
 
-  // Terms Sticky nav
-
-  // if ($(window).width() > 992) {
-  //   $(".terms-privacy-wrapper .nav-list li a").on("click", function () {
-  //     let id = $(this).attr("href");
-  //     $(".topic").removeClass("pt-80");
-  //     $(id).addClass("pt-80");
-  //     $(window).on("scroll", function () {
-  //       if ($(window).scrollTop() == 0) {
-  //         $(".topic").removeClass("pt-80");
-  //       }
-  //     });
-  //   });
-  // }
 
   // ***********************************************************************************************
 
-  // Countdown
+  // Countdown Page
 
-  let timer = document.querySelector(".timer");
 
-  if (timer) {
-    let stopTimerBtn = document.querySelector(".stop-timer-btn");
-    let startTimerBtn = document.querySelector(".start-timer-btn");
-    let minutesLeft = 0;
-    let minutesRight = 0;
-    let secondsRight = 0;
-    let secondsLeft = 0;
+    let $timer = $(".timer");
 
-    // Function to update the display
-    function updateDisplay() {
-      document.getElementById("minutesLeft").textContent = minutesLeft;
-      document.getElementById("minutesRight").textContent = minutesRight;
-      document.getElementById("secondsLeft").textContent = secondsLeft;
-      document.getElementById("secondsRight").textContent = secondsRight;
-    }
+    if ($timer.length) {
+      let $stopTimerBtn = $(".stop-timer-btn");
+      let $startTimerBtn = $(".start-timer-btn");
+      let minutesLeft = 0;
+      let minutesRight = 0;
+      let secondsLeft = 0;
+      let secondsRight = 0;
 
-    // Function to handle button clicks
-    function handleButtonClick(event) {
-      const button = event.currentTarget;
-      const type = button.closest(".time-control").classList[1];
-      const direction = button.classList.contains("up") ? 1 : -1;
-      if (type.includes("minutes-left")) {
-        minutesLeft = Math.max(0, Math.min(5, minutesLeft + direction));
-      } else if (type.includes("minutes-right")) {
-        minutesRight = Math.max(0, Math.min(9, minutesRight + direction));
-      } else if (type.includes("seconds-left")) {
-        secondsLeft = Math.max(0, Math.min(5, secondsLeft + direction));
-      } else if (type.includes("seconds-right")) {
-        secondsRight = Math.max(0, Math.min(9, secondsRight + direction));
+      // Function to update the display
+      function updateDisplay() {
+        $("#minutesLeft").text(minutesLeft);
+        $("#minutesRight").text(minutesRight);
+        $("#secondsLeft").text(secondsLeft);
+        $("#secondsRight").text(secondsRight);
       }
-      updateDisplay();
-    }
 
-    // click on arrow button
-    document.querySelectorAll(".time-control .arrow").forEach((button) => {
-      button.addEventListener("click", handleButtonClick);
-    });
+      // Function to handle button clicks
+      function handleButtonClick() {
+        let $button = $(this);
+        let type = $button.closest(".time-control").attr("class");
+        let direction = $button.hasClass("up") ? 1 : -1;
 
-    //  start timer Function
-    function startTimer() {
-      let totalSeconds =
-        (minutesLeft * 10 + minutesRight) * 60 +
-        (secondsLeft * 10 + secondsRight);
-      if (totalSeconds <= 0) return; // Prevent starting if timer is 00:00
-      document
-        .querySelectorAll(".countdown-parent .number, .countdown-parent .colon")
-        .forEach((element) => element.classList.add("blue-color"));
-      document
-        .querySelectorAll(".time-control .arrow")
-        .forEach((element) => element.classList.add("d-none"));
-
-      stopTimerBtn.style.display = "flex";
-      startTimerBtn.style.display = "none";
-      updateDisplay();
-
-      let interval = setInterval(() => {
-        if (totalSeconds <= 0) {
-          clearInterval(interval);
-          document
-            .querySelectorAll(
-              ".countdown-parent .number, .countdown-parent .colon"
-            )
-            .forEach((element) => element.classList.remove("blue-color"));
-          document
-            .querySelectorAll(".time-control .arrow")
-            .forEach((element) => element.classList.remove("d-none"));
-          stopTimerBtn.style.display = "none";
-          startTimerBtn.style.display = "flex";
-        } else {
-          totalSeconds--;
-          const minutes = Math.floor(totalSeconds / 60);
-          const seconds = totalSeconds % 60;
-          minutesLeft = Math.floor(minutes / 10);
-          minutesRight = minutes % 10;
-          secondsLeft = Math.floor(seconds / 10);
-          secondsRight = seconds % 10;
-          updateDisplay();
+        if (type.includes("minutes-left")) {
+          minutesLeft = Math.max(0, Math.min(5, minutesLeft + direction));
+        } else if (type.includes("minutes-right")) {
+          minutesRight = Math.max(0, Math.min(9, minutesRight + direction));
+        } else if (type.includes("seconds-left")) {
+          secondsLeft = Math.max(0, Math.min(5, secondsLeft + direction));
+        } else if (type.includes("seconds-right")) {
+          secondsRight = Math.max(0, Math.min(9, secondsRight + direction));
         }
-      }, 1000);
+        updateDisplay();
+      }
 
-      stopTimerBtn.addEventListener("click", function () {
-        clearInterval(interval);
-        document
-          .querySelectorAll(
-            ".countdown-parent .number, .countdown-parent .colon"
-          )
-          .forEach((element) => element.classList.remove("blue-color"));
-        document
-          .querySelectorAll(".time-control .arrow")
-          .forEach((element) => element.classList.remove("d-none"));
-        stopTimerBtn.style.display = "none";
-        startTimerBtn.style.display = "flex";
-      });
+      // Click on arrow button
+      $(".time-control .arrow").on("click", handleButtonClick);
+
+      // Start timer function
+      function startTimer() {
+        let totalSeconds =
+          (minutesLeft * 10 + minutesRight) * 60 +
+          (secondsLeft * 10 + secondsRight);
+
+        if (totalSeconds <= 0) return; // Prevent starting if timer is 00:00
+
+        $(".countdown-parent .number, .countdown-parent .colon").addClass(
+          "blue-color"
+        );
+        $(".time-control .arrow").addClass("d-none");
+        $stopTimerBtn.css("display", "flex");
+        $startTimerBtn.css("display", "none");
+
+        updateDisplay();
+
+        let interval = setInterval(() => {
+          if (totalSeconds <= 0) {
+            clearInterval(interval);
+            $(
+              ".countdown-parent .number, .countdown-parent .colon"
+            ).removeClass("blue-color");
+            $(".time-control .arrow").removeClass("d-none");
+            $stopTimerBtn.css("display", "none");
+            $startTimerBtn.css("display", "flex");
+          } else {
+            totalSeconds--;
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            minutesLeft = Math.floor(minutes / 10);
+            minutesRight = minutes % 10;
+            secondsLeft = Math.floor(seconds / 10);
+            secondsRight = seconds % 10;
+            updateDisplay();
+          }
+        }, 1000);
+
+        $stopTimerBtn.on("click", function () {
+          clearInterval(interval);
+          $(".countdown-parent .number, .countdown-parent .colon").removeClass(
+            "blue-color"
+          );
+          $(".time-control .arrow").removeClass("d-none");
+          $stopTimerBtn.css("display", "none");
+          $startTimerBtn.css("display", "flex");
+        });
+      }
+
+      $startTimerBtn.on("click", startTimer);
     }
-
-    startTimerBtn.addEventListener("click", startTimer);
-
-    updateDisplay();
-  }
 
   // ***********************************************************************************************
 
-  // Wheel
+  // Wheel in studentsWheel page
 
   let currentAngle = 0;
 
@@ -478,7 +488,7 @@ $(document).ready(function () {
 
   // ***********************************************************************************************
 
-  // Mobile Side Menu
+  // Mobile Main Menu
 
   $(".bars").click(function () {
     $(".navigation").addClass("show-navigation");
@@ -491,7 +501,7 @@ $(document).ready(function () {
   });
 
   // ***********************************************************************************************
-  // show password
+  // show password when click icon
   $(".pass-input-wrapper .icon").click(function () {
     $(this).toggleClass("fa-eye-slash").toggleClass("fa-eye");
     let input = $(this).siblings(".input");
@@ -503,7 +513,7 @@ $(document).ready(function () {
   });
   // ***********************************************************************************************
 
-  // Fixed header
+  // Fixed Header
 
   $(window).on("scroll", function () {
     if ($(window).scrollTop() > 0) {
@@ -515,10 +525,10 @@ $(document).ready(function () {
 
   // ***********************************************************************************************
 
-  //  Footer Dropdown Menu
+  //  Footer Collapse in Mobile
 
   if ($(window).width() < 768) {
-    $(".footer-title").click(function () {
+    $(".footer-title").on("click" , function () {
       $(this).next(".collapse-ul").slideToggle(300);
       $(this).toggleClass("arrow-rotate");
       $(".footer-title").not($(this)).next(".collapse-ul").slideUp(300);
