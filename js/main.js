@@ -122,6 +122,11 @@ $(document).ready(function () {
     $(".images_eduContent_modal").fadeIn();
   });
 
+  $(".document-eduContent-btn").on("click", function () {
+    $(".document_eduContent_modal").fadeIn();
+  });
+
+
   // Session Attendances & Absences
 
   $(".attendanceAbsence-page .student-card-btn").on("click", function () {
@@ -211,7 +216,7 @@ $(document).ready(function () {
     $(".challenge-number-btn input").prop("checked", false);
   });
 
-  // Ranks Modal
+  // Ranks Modals
   $(".rank-rewards-btn").on("click", function () {
     $(".rank_rewards_modal").fadeIn();
   });
@@ -221,10 +226,19 @@ $(document).ready(function () {
 
   $(".edit-rank-btn").on("click", function () {
     $(".edit_rank_modal").fadeIn();
+    setTimeout(() => {
+      $(".delete_rank_reward_modal .modal_box").removeClass("transition-box");
+    }, 1);
   });
 
   $(".delete-rank-btn").on("click", function () {
     $(".delete_rank_modal").fadeIn();
+  });
+
+  // Delete Reward in rank
+  $(".delete-rank-reward-btn").on("click", function (e) {
+    e.preventDefault();
+    $(".delete_rank_reward_modal").fadeIn();
   });
 
   // Delete AddingPointsReason Modal
@@ -269,8 +283,8 @@ $(document).ready(function () {
     $(".logout_modal").fadeIn();
   });
 
-  // ////////////////////////////////////////////////////////////////////
-  //  Common in All Modals
+  // /////  ///   ///   /////   /////   ///   ////////   ///////   //////////   ////////   ///////
+  //  Common in  M O D A L S
   $(".modal_btn").on("click", function () {
     $(".modal_box").addClass("transition-box");
     $("body").addClass("overflowHidden");
@@ -280,12 +294,19 @@ $(document).ready(function () {
     e.preventDefault();
   });
 
-  $(".general_modal , .close_modal , .modal_btns .outline-btn").on(
+  $(".general_modal, .close_modal, .modal_btns .outline-btn").on(
     "click",
     function (e) {
-      $(".general_modal").fadeOut();
-      $("body").removeClass("overflowHidden");
-      $(".modal_box").removeClass("transition-box");
+      let modal = $(this).closest(".general_modal");
+      let modalBox = modal.find(".modal_box");
+      modal.fadeOut();
+      if (modal.hasClass("delete_rank_reward_modal")) {
+         modalBox.removeClass("transition-box");
+      }else{
+        $("body").removeClass("overflowHidden");
+        $(".modal_box").removeClass("transition-box");
+      }
+     
     }
   );
 
@@ -294,6 +315,7 @@ $(document).ready(function () {
   ).on("click", function (e) {
     e.stopPropagation();
   });
+
   // ************************************************************************************************
 
   //  Select2
@@ -363,7 +385,6 @@ $(document).ready(function () {
 
   // ***********************************************************************************************
 
-
   $("input[type=tel]").each(function () {
     intlTelInput(this, {
       utilsScript: "utils.js",
@@ -374,90 +395,68 @@ $(document).ready(function () {
     });
   });
 
-
   // ***********************************************************************************************
 
   // Countdown Page
 
+  let $timer = $(".timer");
 
-    let $timer = $(".timer");
+  if ($timer.length) {
+    let $stopTimerBtn = $(".stop-timer-btn");
+    let $startTimerBtn = $(".start-timer-btn");
+    let minutesLeft = 0;
+    let minutesRight = 0;
+    let secondsLeft = 0;
+    let secondsRight = 0;
 
-    if ($timer.length) {
-      let $stopTimerBtn = $(".stop-timer-btn");
-      let $startTimerBtn = $(".start-timer-btn");
-      let minutesLeft = 0;
-      let minutesRight = 0;
-      let secondsLeft = 0;
-      let secondsRight = 0;
+    // Function to update the display
+    function updateDisplay() {
+      $("#minutesLeft").text(minutesLeft);
+      $("#minutesRight").text(minutesRight);
+      $("#secondsLeft").text(secondsLeft);
+      $("#secondsRight").text(secondsRight);
+    }
 
-      // Function to update the display
-      function updateDisplay() {
-        $("#minutesLeft").text(minutesLeft);
-        $("#minutesRight").text(minutesRight);
-        $("#secondsLeft").text(secondsLeft);
-        $("#secondsRight").text(secondsRight);
+    // Function to handle button clicks
+    function handleButtonClick() {
+      let $button = $(this);
+      let type = $button.closest(".time-control").attr("class");
+      let direction = $button.hasClass("up") ? 1 : -1;
+
+      if (type.includes("minutes-left")) {
+        minutesLeft = Math.max(0, Math.min(5, minutesLeft + direction));
+      } else if (type.includes("minutes-right")) {
+        minutesRight = Math.max(0, Math.min(9, minutesRight + direction));
+      } else if (type.includes("seconds-left")) {
+        secondsLeft = Math.max(0, Math.min(5, secondsLeft + direction));
+      } else if (type.includes("seconds-right")) {
+        secondsRight = Math.max(0, Math.min(9, secondsRight + direction));
       }
+      updateDisplay();
+    }
 
-      // Function to handle button clicks
-      function handleButtonClick() {
-        let $button = $(this);
-        let type = $button.closest(".time-control").attr("class");
-        let direction = $button.hasClass("up") ? 1 : -1;
+    // Click on arrow button
+    $(".time-control .arrow").on("click", handleButtonClick);
 
-        if (type.includes("minutes-left")) {
-          minutesLeft = Math.max(0, Math.min(5, minutesLeft + direction));
-        } else if (type.includes("minutes-right")) {
-          minutesRight = Math.max(0, Math.min(9, minutesRight + direction));
-        } else if (type.includes("seconds-left")) {
-          secondsLeft = Math.max(0, Math.min(5, secondsLeft + direction));
-        } else if (type.includes("seconds-right")) {
-          secondsRight = Math.max(0, Math.min(9, secondsRight + direction));
-        }
-        updateDisplay();
-      }
+    // Start timer function
+    function startTimer() {
+      let totalSeconds =
+        (minutesLeft * 10 + minutesRight) * 60 +
+        (secondsLeft * 10 + secondsRight);
 
-      // Click on arrow button
-      $(".time-control .arrow").on("click", handleButtonClick);
+      if (totalSeconds <= 0) return; // Prevent starting if timer is 00:00
 
-      // Start timer function
-      function startTimer() {
-        let totalSeconds =
-          (minutesLeft * 10 + minutesRight) * 60 +
-          (secondsLeft * 10 + secondsRight);
+      $(".countdown-parent .number, .countdown-parent .colon").addClass(
+        "blue-color"
+      );
+      $(".time-control .arrow").addClass("d-none");
+      $stopTimerBtn.css("display", "flex");
+      $startTimerBtn.css("display", "none");
 
-        if (totalSeconds <= 0) return; // Prevent starting if timer is 00:00
+      updateDisplay();
 
-        $(".countdown-parent .number, .countdown-parent .colon").addClass(
-          "blue-color"
-        );
-        $(".time-control .arrow").addClass("d-none");
-        $stopTimerBtn.css("display", "flex");
-        $startTimerBtn.css("display", "none");
-
-        updateDisplay();
-
-        let interval = setInterval(() => {
-          if (totalSeconds <= 0) {
-            clearInterval(interval);
-            $(
-              ".countdown-parent .number, .countdown-parent .colon"
-            ).removeClass("blue-color");
-            $(".time-control .arrow").removeClass("d-none");
-            $stopTimerBtn.css("display", "none");
-            $startTimerBtn.css("display", "flex");
-          } else {
-            totalSeconds--;
-            const minutes = Math.floor(totalSeconds / 60);
-            const seconds = totalSeconds % 60;
-            minutesLeft = Math.floor(minutes / 10);
-            minutesRight = minutes % 10;
-            secondsLeft = Math.floor(seconds / 10);
-            secondsRight = seconds % 10;
-            updateDisplay();
-          }
-        }, 1000);
-
-        $stopTimerBtn.on("click", function () {
+      let interval = setInterval(() => {
+        if (totalSeconds <= 0) {
           clearInterval(interval);
           $(".countdown-parent .number, .countdown-parent .colon").removeClass(
             "blue-color"
@@ -465,11 +464,31 @@ $(document).ready(function () {
           $(".time-control .arrow").removeClass("d-none");
           $stopTimerBtn.css("display", "none");
           $startTimerBtn.css("display", "flex");
-        });
-      }
+        } else {
+          totalSeconds--;
+          const minutes = Math.floor(totalSeconds / 60);
+          const seconds = totalSeconds % 60;
+          minutesLeft = Math.floor(minutes / 10);
+          minutesRight = minutes % 10;
+          secondsLeft = Math.floor(seconds / 10);
+          secondsRight = seconds % 10;
+          updateDisplay();
+        }
+      }, 1000);
 
-      $startTimerBtn.on("click", startTimer);
+      $stopTimerBtn.on("click", function () {
+        clearInterval(interval);
+        $(".countdown-parent .number, .countdown-parent .colon").removeClass(
+          "blue-color"
+        );
+        $(".time-control .arrow").removeClass("d-none");
+        $stopTimerBtn.css("display", "none");
+        $startTimerBtn.css("display", "flex");
+      });
     }
+
+    $startTimerBtn.on("click", startTimer);
+  }
 
   // ***********************************************************************************************
 
@@ -528,7 +547,7 @@ $(document).ready(function () {
   //  Footer Collapse in Mobile
 
   if ($(window).width() < 768) {
-    $(".footer-title").on("click" , function () {
+    $(".footer-title").on("click", function () {
       $(this).next(".collapse-ul").slideToggle(300);
       $(this).toggleClass("arrow-rotate");
       $(".footer-title").not($(this)).next(".collapse-ul").slideUp(300);

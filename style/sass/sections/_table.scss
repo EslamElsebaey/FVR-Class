@@ -571,6 +571,9 @@
     th {
       &:nth-of-type(2) {
         min-width: 192px;
+        @include max-768{
+          min-width: 160px;
+        }
       }
     }
     td,

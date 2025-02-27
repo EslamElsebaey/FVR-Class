@@ -3429,6 +3429,12 @@ html[dir=ltr] .select2-container .select2-selection--single .select2-selection__
 .edit-rank-modal-table .table th:nth-of-type(2) {
   min-width: 192px;
 }
+@media only screen and (max-width: 767px) {
+  .edit-rank-modal-table .table td:nth-of-type(2),
+  .edit-rank-modal-table .table th:nth-of-type(2) {
+    min-width: 160px;
+  }
+}
 .edit-rank-modal-table .table td:nth-of-type(3),
 .edit-rank-modal-table .table th:nth-of-type(3) {
   min-width: 70px;
@@ -4284,7 +4290,7 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
   top: 168px;
   inset-inline-start: 0;
   z-index: 100;
-  gap: 5px;
+  row-gap: 2px;
 }
 @media only screen and (max-width: 767px) {
   .session-sidebar {
@@ -4914,7 +4920,7 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
 @media only screen and (max-width: 767px) {
   .countdown-parent .number,
   .countdown-parent .colon {
-    font-size: 90px;
+    font-size: 80px;
   }
 }
 .countdown-parent .blue-color {
@@ -4973,6 +4979,13 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
 .countdown-parent .stop-timer-btn {
   min-width: 160px;
   padding-inline: 40px;
+}
+@media only screen and (max-width: 767px) {
+  .countdown-parent .start-timer-btn,
+  .countdown-parent .stop-timer-btn {
+    min-width: 150px;
+    padding-inline: 35px;
+  }
 }
 
 @media only screen and (max-width: 991px) {
