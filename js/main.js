@@ -497,7 +497,7 @@ $(document).ready(function () {
   let currentAngle = 0;
 
   $(".wheel-parent .rotate-btn").on("click", function () {
-    let randomDegree = Math.floor(Math.random() * 360) + 250;
+    let randomDegree = Math.floor(Math.random() * 360) + 300;
     currentAngle += randomDegree;
     $(".wheel-parent .circle-wrapper").css(
       "transform",
