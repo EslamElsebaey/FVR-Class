@@ -277,45 +277,18 @@
 
 // Sessions Table
 .sessions-table {
-  // .table {
-  //   table-layout: auto;
-  //   td,
-  //   th {
-  //     &:first-of-type {
-  //       min-width: 78px;
-  //     }
-  //   }
-  //   td,
-  //   th {
-  //     &:nth-of-type(2) {
-  //       min-width: 163px;
-  //     }
-  //   }
-  //   td,
-  //   th {
-  //     &:nth-of-type(3) {
-  //       min-width: 326px;
-  //     }
-  //   }
-  //   td,
-  //   th {
-  //     &:nth-of-type(4) {
-  //       min-width: 142px;
-  //     }
-  //   }
-  //   td,
-  //   th {
-  //     &:nth-of-type(5) {
-  //       min-width: 69px;
-  //     }
-  //   }
-  //   td,
-  //   th {
-  //     &:nth-of-type(6) {
-  //       min-width: 70px;
-  //     }
-  //   }
-  // }
+  .table {
+    @include max-768 {
+      th[colspan="2"],
+      td[colspan="2"] {
+        min-width: 160px;
+      }
+      th[colspan="3"],
+      td[colspan="3"] {
+        min-width: 190px;
+      }
+    }
+  }
   .status {
     text-align: start;
     font-size: 14px;
@@ -571,7 +544,7 @@
     th {
       &:nth-of-type(2) {
         min-width: 192px;
-        @include max-768{
+        @include max-768 {
           min-width: 160px;
         }
       }

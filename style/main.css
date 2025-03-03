@@ -3220,6 +3220,16 @@ html[dir=ltr] .select2-container .select2-selection--single .select2-selection__
   min-width: 180px;
 }
 
+@media only screen and (max-width: 767px) {
+  .sessions-table .table th[colspan="2"],
+  .sessions-table .table td[colspan="2"] {
+    min-width: 160px;
+  }
+  .sessions-table .table th[colspan="3"],
+  .sessions-table .table td[colspan="3"] {
+    min-width: 190px;
+  }
+}
 .sessions-table .status {
   text-align: start;
   font-size: 14px;
