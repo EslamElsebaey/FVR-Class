@@ -588,26 +588,28 @@ $(document).ready(function () {
 
   let currentAngle = 0;
 
-  spinButton.addEventListener("click", () => {
-    const randomAngle = Math.random() * 360;
-    const numRotations = 5 + Math.floor(Math.random() * 6);
-    const additionalRotation = numRotations * 360 + randomAngle;
-    currentAngle += additionalRotation;
+  if (spinButton) {
+    spinButton.addEventListener("click", () => {
+      const randomAngle = Math.random() * 360;
+      const numRotations = 5 + Math.floor(Math.random() * 6);
+      const additionalRotation = numRotations * 360 + randomAngle;
+      currentAngle += additionalRotation;
 
-    wheel.style.transform = `translateX(-50%) rotate(${currentAngle}deg)`;
-    spinButton.disabled = true;
+      wheel.style.transform = `translateX(-50%) rotate(${currentAngle}deg)`;
+      spinButton.disabled = true;
 
-    setTimeout(() => {
-      const effectiveAngle = (360 - (currentAngle % 360)) % 360;
-      let index = Math.floor(effectiveAngle / 45);
-      const selectedElement = studentsInWheel[index];
-      const selectedName = selectedElement.textContent.trim();
-      let selectedId = selectedElement.getAttribute("data-id");
-      console.log(selectedId);
-      console.log(selectedName);
-      spinButton.disabled = false;
-    }, 5000);
-  });
+      setTimeout(() => {
+        const effectiveAngle = (360 - (currentAngle % 360)) % 360;
+        let index = Math.floor(effectiveAngle / 45);
+        const selectedElement = studentsInWheel[index];
+        const selectedName = selectedElement.textContent.trim();
+        let selectedId = selectedElement.getAttribute("data-id");
+        console.log(selectedId);
+        console.log(selectedName);
+        spinButton.disabled = false;
+      }, 5000);
+    });
+  }
 
   // ***********************************************************************************************
 
