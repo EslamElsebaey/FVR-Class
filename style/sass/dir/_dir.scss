@@ -15,7 +15,7 @@ html[dir="ltr"] {
   .goback-arrow {
     transform: rotate(180deg);
   }
- .form-header .back-anchor::after,
+  .form-header .back-anchor::after,
   .terms-privacy-wrapper .nav-list li::before {
     transform: rotate(180deg);
   }
@@ -40,6 +40,23 @@ html[dir="ltr"] {
   .copyright .tasawk-text a {
     gap: 3px;
   }
+
+  // *************************************************************************
+  .user-menu .sub-menu li {
+    line-height: 21px;
+  }
+  .user-menu .menu-anchor {
+    line-height: 1.4;
+  }
+  .user-menu .menu-anchor {
+    align-items: flex-start;
+  }
+  .user-menu .sub-menu .sub-anchor {
+    line-height: 1.35;
+  }
+  // .user-menu .sub-menu{
+  //   padding-inline-end: 27px;
+  // }
   @include max-768 {
     .cta-box .cta-text {
       line-height: 1.5;
@@ -75,10 +92,12 @@ html[dir="ltr"] {
     .progressbar li span {
       line-height: 1.3;
     }
+
+    // *************************************************************************
   }
-  
-  @include max-370{
-    .form-header .register-anchor{
+
+  @include max-370 {
+    .form-header .register-anchor {
       padding-inline: 10px;
     }
   }

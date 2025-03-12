@@ -121,11 +121,12 @@ $(document).ready(function () {
   $(".images-eduContent-btn").on("click", function () {
     $(".images_eduContent_modal").fadeIn();
   });
-
   $(".document-eduContent-btn").on("click", function () {
     $(".document_eduContent_modal").fadeIn();
   });
-
+  $(".audio-eduContent-btn").on("click", function () {
+    $(".audio_eduContent_modal").fadeIn();
+  });
 
   // Session Attendances & Absences
 
@@ -277,7 +278,7 @@ $(document).ready(function () {
     $(".delete_challenge_modal").fadeIn();
   });
 
-  // Log out Modal
+  // Logout Modal
   $(".logout-btn").on("click", function (e) {
     e.preventDefault();
     $(".logout_modal").fadeIn();
@@ -301,12 +302,11 @@ $(document).ready(function () {
       let modalBox = modal.find(".modal_box");
       modal.fadeOut();
       if (modal.hasClass("delete_rank_reward_modal")) {
-         modalBox.removeClass("transition-box");
-      }else{
+        modalBox.removeClass("transition-box");
+      } else {
         $("body").removeClass("overflowHidden");
         $(".modal_box").removeClass("transition-box");
       }
-     
     }
   );
 
@@ -397,8 +397,6 @@ $(document).ready(function () {
 
   // ***********************************************************************************************
 
-  // Countdown Page
-
   let $timer = $(".timer");
 
   if ($timer.length) {
@@ -408,8 +406,50 @@ $(document).ready(function () {
     let minutesRight = 0;
     let secondsLeft = 0;
     let secondsRight = 0;
+    let interval = null;
 
-    // Function to update the display
+    // تحميل حالة التايمر
+    function loadTimerState() {
+      let storedTime = localStorage.getItem("timer-remaining");
+      let startTimestamp = localStorage.getItem("timer-start-timestamp");
+      let isPaused = localStorage.getItem("timer-paused") === "true";
+
+      if (storedTime) {
+        let totalSeconds = parseInt(storedTime);
+
+        if (startTimestamp && !isPaused) {
+          // إذا كان التايمر يعمل (غير متوقف)
+          let elapsedTime = Math.floor(
+            (Date.now() - parseInt(startTimestamp)) / 1000
+          );
+          let remainingSeconds = totalSeconds - elapsedTime;
+
+          if (remainingSeconds > 0) {
+            updateTimeFromSeconds(remainingSeconds);
+            updateDisplay();
+            startTimer(true); // استمر في التايمر
+          } else {
+            resetTimer();
+          }
+        } else if (isPaused) {
+          // إذا كان التايمر متوقفًا، فقط اعرض الوقت المتبقي
+          updateTimeFromSeconds(totalSeconds);
+          updateDisplay();
+        }
+      }
+    }
+
+    // تحديث الوقت من الثواني
+    function updateTimeFromSeconds(seconds) {
+      const minutes = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      minutesLeft = Math.floor(minutes / 10);
+      minutesRight = minutes % 10;
+      secondsLeft = Math.floor(secs / 10);
+      secondsRight = secs % 10;
+    }
+
+    // تحديث العرض
     function updateDisplay() {
       $("#minutesLeft").text(minutesLeft);
       $("#minutesRight").text(minutesRight);
@@ -417,7 +457,16 @@ $(document).ready(function () {
       $("#secondsRight").text(secondsRight);
     }
 
-    // Function to handle button clicks
+    // إعادة تهيئة التايمر
+    function resetTimer() {
+      localStorage.removeItem("timer-remaining");
+      localStorage.removeItem("timer-start-timestamp");
+      localStorage.removeItem("timer-paused");
+      updateTimeFromSeconds(0);
+      updateDisplay();
+    }
+
+    // التعامل مع أزرار التحكم
     function handleButtonClick() {
       let $button = $(this);
       let type = $button.closest(".time-control").attr("class");
@@ -435,16 +484,23 @@ $(document).ready(function () {
       updateDisplay();
     }
 
-    // Click on arrow button
     $(".time-control .arrow").on("click", handleButtonClick);
 
-    // Start timer function
-    function startTimer() {
-      let totalSeconds =
-        (minutesLeft * 10 + minutesRight) * 60 +
-        (secondsLeft * 10 + secondsRight);
+    // بدء التايمر
+    function startTimer(isResuming = false) {
+      let totalSeconds = isResuming
+        ? (minutesLeft * 10 + minutesRight) * 60 +
+          (secondsLeft * 10 + secondsRight)
+        : (minutesLeft * 10 + minutesRight) * 60 +
+          (secondsLeft * 10 + secondsRight);
 
-      if (totalSeconds <= 0) return; // Prevent starting if timer is 00:00
+      if (totalSeconds <= 0) return;
+
+      if (!isResuming) {
+        localStorage.setItem("timer-remaining", totalSeconds);
+        localStorage.setItem("timer-start-timestamp", Date.now());
+      }
+      localStorage.setItem("timer-paused", "false");
 
       $(".countdown-parent .number, .countdown-parent .colon").addClass(
         "blue-color"
@@ -453,10 +509,15 @@ $(document).ready(function () {
       $stopTimerBtn.css("display", "flex");
       $startTimerBtn.css("display", "none");
 
-      updateDisplay();
+      interval = setInterval(() => {
+        let startTimestamp = parseInt(
+          localStorage.getItem("timer-start-timestamp")
+        );
+        let initialSeconds = parseInt(localStorage.getItem("timer-remaining"));
+        let elapsedTime = Math.floor((Date.now() - startTimestamp) / 1000);
+        let remainingSeconds = initialSeconds - elapsedTime;
 
-      let interval = setInterval(() => {
-        if (totalSeconds <= 0) {
+        if (remainingSeconds <= 0) {
           clearInterval(interval);
           $(".countdown-parent .number, .countdown-parent .colon").removeClass(
             "blue-color"
@@ -464,19 +525,15 @@ $(document).ready(function () {
           $(".time-control .arrow").removeClass("d-none");
           $stopTimerBtn.css("display", "none");
           $startTimerBtn.css("display", "flex");
+          resetTimer();
         } else {
-          totalSeconds--;
-          const minutes = Math.floor(totalSeconds / 60);
-          const seconds = totalSeconds % 60;
-          minutesLeft = Math.floor(minutes / 10);
-          minutesRight = minutes % 10;
-          secondsLeft = Math.floor(seconds / 10);
-          secondsRight = seconds % 10;
+          updateTimeFromSeconds(remainingSeconds);
           updateDisplay();
         }
       }, 1000);
 
-      $stopTimerBtn.on("click", function () {
+      // تعديل زر الإيقاف
+      $stopTimerBtn.off("click").on("click", function () {
         clearInterval(interval);
         $(".countdown-parent .number, .countdown-parent .colon").removeClass(
           "blue-color"
@@ -484,25 +541,72 @@ $(document).ready(function () {
         $(".time-control .arrow").removeClass("d-none");
         $stopTimerBtn.css("display", "none");
         $startTimerBtn.css("display", "flex");
+
+        // احسب الوقت المتبقي وحفظه في localStorage
+        let startTimestamp = parseInt(
+          localStorage.getItem("timer-start-timestamp")
+        );
+        let initialSeconds = parseInt(localStorage.getItem("timer-remaining"));
+        let elapsedTime = Math.floor((Date.now() - startTimestamp) / 1000);
+        let remainingSeconds = initialSeconds - elapsedTime;
+
+        localStorage.setItem("timer-remaining", remainingSeconds);
+        localStorage.setItem("timer-paused", "true"); // علامة أن التايمر متوقف
+        localStorage.removeItem("timer-start-timestamp"); // لا حاجة لطابع الزمن عند الإيقاف
       });
     }
 
-    $startTimerBtn.on("click", startTimer);
+    $startTimerBtn.on("click", () => startTimer(false));
+    loadTimerState();
   }
+
+  // ***********************************************************************************************
+
+  // Groups Radio checked
+  $(".student-cards .student-card").on("click", function (e) {
+    e.stopPropagation();
+    $(".group-card-btn > input[type='radio']").prop("checked", false);
+  });
+  $(".group-card-btn").on("click", function (e) {
+    e.stopPropagation();
+    $(".student-cards .student-card > input[type='radio']").prop(
+      "checked",
+      false
+    );
+  });
 
   // ***********************************************************************************************
 
   // Wheel in studentsWheel page
 
+  let studentsInWheel = Array.from(
+    document.querySelectorAll(".wheel-parent .item")
+  );
+
+  const wheel = document.querySelector(".wheel-parent .circle-wrapper");
+  const spinButton = document.querySelector(".wheel-parent .rotate-btn");
+
   let currentAngle = 0;
 
-  $(".wheel-parent .rotate-btn").on("click", function () {
-    let randomDegree = Math.floor(Math.random() * 360) + 300;
-    currentAngle += randomDegree;
-    $(".wheel-parent .circle-wrapper").css(
-      "transform",
-      `translateX(-50%) rotate(${currentAngle}deg)`
-    );
+  spinButton.addEventListener("click", () => {
+    const randomAngle = Math.random() * 360;
+    const numRotations = 5 + Math.floor(Math.random() * 6);
+    const additionalRotation = numRotations * 360 + randomAngle;
+    currentAngle += additionalRotation;
+
+    wheel.style.transform = `translateX(-50%) rotate(${currentAngle}deg)`;
+    spinButton.disabled = true;
+
+    setTimeout(() => {
+      const effectiveAngle = (360 - (currentAngle % 360)) % 360;
+      let index = Math.floor(effectiveAngle / 45);
+      const selectedElement = studentsInWheel[index];
+      const selectedName = selectedElement.textContent.trim();
+      let selectedId = selectedElement.getAttribute("data-id");
+      console.log(selectedId);
+      console.log(selectedName);
+      spinButton.disabled = false;
+    }, 5000);
   });
 
   // ***********************************************************************************************

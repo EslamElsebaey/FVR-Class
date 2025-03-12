@@ -4443,6 +4443,12 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
   }
 }
 
+.audio-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .eduContent-images {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -4648,6 +4654,8 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
   padding-inline: 10px;
   padding-bottom: 12px;
   min-height: 100px;
+  border: 2px solid transparent;
+  cursor: pointer;
 }
 .group-card-btn .student-card img {
   width: 50px;
@@ -4666,12 +4674,17 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
   color: #000000;
 }
 
-.groups-parent .group-card-btn:has(input:checked) {
+.groups-parent .group-card-btn:has(> input:checked) {
   border-color: #0363f6;
   background-color: rgba(3, 99, 246, 0.1019607843);
 }
-.groups-parent .group-card-btn:has(input:checked) .student-card {
+.groups-parent .group-card-btn:has(> input:checked) .student-card {
   background-color: rgba(3, 99, 246, 0.031372549);
+}
+
+.student-cards .student-card:has(input:checked) {
+  background-color: rgba(3, 99, 246, 0.1019607843);
+  border-color: #0363f6;
 }
 
 .challenges-history-anchor,
@@ -4775,36 +4788,6 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
     margin-top: 35px;
   }
 }
-.wheel-parent .item:nth-of-type(even) {
-  background-color: #fff;
-}
-.wheel-parent .item:nth-of-type(odd) {
-  background-color: #cde0fd;
-}
-.wheel-parent .item-1 {
-  transform: rotate(45deg);
-}
-.wheel-parent .item-2 {
-  transform: rotate(90deg);
-}
-.wheel-parent .item-3 {
-  transform: rotate(135deg);
-}
-.wheel-parent .item-4 {
-  transform: rotate(180deg);
-}
-.wheel-parent .item-5 {
-  transform: rotate(225deg);
-}
-.wheel-parent .item-6 {
-  transform: rotate(270deg);
-}
-.wheel-parent .item-7 {
-  transform: rotate(315deg);
-}
-.wheel-parent .item-8 {
-  transform: rotate(360deg);
-}
 
 .wheel-parent .rotate-btn {
   position: absolute;
@@ -4836,33 +4819,31 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-clip-path: polygon(50% 50%, 100% 0, 100% 50%, 50% 50%);
-          clip-path: polygon(50% 50%, 100% 0, 100% 50%, 50% 50%);
-  transform-origin: 50% 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
 .wheel-parent .item .text {
-  right: 5%;
-  font-size: 12px;
   position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 12px;
   display: block;
   font-weight: 700;
   text-align: center;
   color: #000;
-  max-width: 105px;
-  transform: rotate(-16deg);
-  top: 37%;
+  max-width: 90px;
 }
 @media only screen and (max-width: 767px) {
   .wheel-parent .item .text {
-    right: 8px;
     font-size: 10px;
+    max-width: 70px;
   }
 }
 .wheel-parent .circle-wrapper {
+  background: conic-gradient(from 0deg, white 0deg 45deg, #cde0fd 45deg 90deg, white 90deg 135deg, #cde0fd 135deg 180deg, white 180deg 225deg, #cde0fd 225deg 270deg, white 270deg 315deg, #cde0fd 315deg 360deg);
   overflow: hidden;
   position: absolute;
   margin-inline: auto;
@@ -4873,7 +4854,7 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
   top: 11%;
   left: 50%;
   transform: translateX(-50%);
-  transition: transform ease-in-out 3s;
+  transition: transform ease-in-out 5s;
   transform-origin: 50% 50%;
 }
 @media only screen and (max-width: 767px) {
@@ -4903,9 +4884,15 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
 .wheel-parent .wheel-wrapper .indicator-img {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-60%);
   z-index: 4;
-  width: 100%;
+  width: 45px;
+  top: 12px;
+}
+@media only screen and (max-width: 767px) {
+  .wheel-parent .wheel-wrapper .indicator-img {
+    width: 30px;
+  }
 }
 
 .countdown-parent {
@@ -5321,6 +5308,18 @@ html[dir=ltr] .features-content .features-list li i {
 }
 html[dir=ltr] .copyright .tasawk-text a {
   gap: 3px;
+}
+html[dir=ltr] .user-menu .sub-menu li {
+  line-height: 21px;
+}
+html[dir=ltr] .user-menu .menu-anchor {
+  line-height: 1.4;
+}
+html[dir=ltr] .user-menu .menu-anchor {
+  align-items: flex-start;
+}
+html[dir=ltr] .user-menu .sub-menu .sub-anchor {
+  line-height: 1.35;
 }
 @media only screen and (max-width: 767px) {
   html[dir=ltr] .cta-box .cta-text {
