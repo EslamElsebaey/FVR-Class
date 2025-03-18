@@ -67,6 +67,7 @@
   padding-bottom: 115px;
   @include max-768 {
     padding-bottom: 60px;
+    overflow: hidden;
   }
   .container-fluid {
     padding-inline: 30px;
@@ -621,6 +622,7 @@
   }
 }
 
+
 .wheel-parent {
   margin-top: 45px;
   display: flex;
@@ -628,46 +630,11 @@
   justify-content: center;
   @include max-768 {
     margin-top: 35px;
+    justify-content: flex-end;
   }
-
-  // .item:nth-of-type(even) {
-  //   background-color: #fff;
-  // }
-  // .item:nth-of-type(odd) {
-  //   background-color: #cde0fd;
-  // }
-  // .item-1 {
-  //   transform: rotate(45deg);
-  // }
-  // .item-2 {
-  //   transform: rotate(90deg);
-  // }
-
-  // .item-3 {
-  //   transform: rotate(135deg);
-  // }
-
-  // .item-4 {
-  //   transform: rotate(180deg);
-  // }
-  // .item-5 {
-  //   transform: rotate(225deg);
-  // }
-  // .item-6 {
-  //   transform: rotate(270deg);
-  // }
-  // .item-7 {
-  //   transform: rotate(315deg);
-  // }
-  // .item-8 {
-  //   transform: rotate(360deg);
-  // }
-}
-
-.wheel-parent {
   .rotate-btn {
     position: absolute;
-    top: 35.5%;
+    top: 50%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
@@ -686,7 +653,6 @@
       width: 50px;
       height: 50px;
       font-size: 13px;
-      top: 36.5%;
     }
   }
   .item {
@@ -715,27 +681,29 @@
       // top: 37%;
       @include max-768 {
         font-size: 10px;
-        max-width: 70px;
+        max-width: 38px;
       }
     }
   }
   .circle-wrapper {
-    background: conic-gradient(
-      from 0deg,
-      white 0deg 45deg,
-      #cde0fd 45deg 90deg,
-      white 90deg 135deg,
-      #cde0fd 135deg 180deg,
-      white 180deg 225deg,
-      #cde0fd 225deg 270deg,
-      white 270deg 315deg,
-      #cde0fd 315deg 360deg
-    );
+    // background: conic-gradient(
+    //   from 0deg,
+    //   #cde0fd 0deg 36deg,
+    //   white 36deg 72deg,
+    //   #cde0fd 72deg 108deg,
+    //   white 108deg 144deg,
+    //   #cde0fd 144deg 180deg,
+    //   white 180deg 216deg,
+    //   #cde0fd 216deg 252deg,
+    //   white 252deg 288deg,
+    //   #cde0fd 288deg 324deg,
+    //   white 324deg 360deg
+    // );
     overflow: hidden;
     position: absolute;
     margin-inline: auto;
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 500px;
     border-radius: 50%;
     z-index: 3;
     top: 11%;
@@ -744,20 +712,17 @@
     transition: transform ease-in-out 5s;
     transform-origin: 50% 50%;
     @include max-768 {
-      width: 230px;
-      height: 230px;
+      width: 300px;
+      height: 300px;
     }
   }
-  // .rotate-wheel{
-  //   transform: translateX(-50%) rotate(250deg);
-  // }
   .wheel-wrapper {
-    width: 460px;
-    height: 460px;
+    width: 600px;
+    height: 600px;
     position: relative;
     @include max-768 {
-      width: 350px;
-      height: 350px;
+      width: 300px;
+      height: 300px;
     }
     .wheel-img {
       width: 100%;
@@ -772,13 +737,43 @@
       transform: translateX(-60%);
       z-index: 4;
       width: 45px;
-      top: 12px;
+      top: 15px;
       @include max-768 {
         width: 30px;
       }
     }
   }
 }
+
+// // تعريف المتغيّرات الأساسية
+// $items: 10; // عدد الأقسام
+// $segment: 360deg / $items;
+// $colors: #cde0fd, white; // مجموعة الألوان المستخدمة
+// $numColors: length($colors);
+
+// // دالة لإرجاع اللون بناءً على الفهرس
+// @function getColor($index) {
+//   @return nth($colors, (($index % $numColors) + 1));
+// }
+
+// // بناء سلسلة التدرّج (stops) بشكل ديناميكي
+// $stops: "";
+// @for $i from 0 through ($items - 1) {
+//   $start: ($i * $segment);
+//   $end: (($i + 1) * $segment);
+//   // إنشاء سلسلة القسم الحالي بصيغة "اللون زاوية البداية زاوية النهاية"
+//   $current-stop: "#{getColor($i)} #{$start} #{$end}";
+//   // إذا كان هذا أول عنصر، لا نضيف فاصلة، وإلا نضيف فاصلة قبل القسم
+//   $stops: if($i == 0, $current-stop, "#{$stops}, #{$current-stop}");
+// }
+
+// .circle-wrapper {
+//   background: conic-gradient(from 0deg, #{$stops});
+//   width: 400px;
+//   height: 400px;
+//   border-radius: 50%;
+//   position: relative;
+// }
 
 .countdown-parent {
   margin-top: 90px;

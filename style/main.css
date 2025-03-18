@@ -4192,6 +4192,7 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
 @media only screen and (max-width: 767px) {
   .session-page {
     padding-bottom: 60px;
+    overflow: hidden;
   }
 }
 .session-page .container-fluid {
@@ -4786,12 +4787,12 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
 @media only screen and (max-width: 767px) {
   .wheel-parent {
     margin-top: 35px;
+    justify-content: flex-end;
   }
 }
-
 .wheel-parent .rotate-btn {
   position: absolute;
-  top: 35.5%;
+  top: 50%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
@@ -4812,7 +4813,6 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
     width: 50px;
     height: 50px;
     font-size: 13px;
-    top: 36.5%;
   }
 }
 .wheel-parent .item {
@@ -4839,16 +4839,15 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
 @media only screen and (max-width: 767px) {
   .wheel-parent .item .text {
     font-size: 10px;
-    max-width: 70px;
+    max-width: 38px;
   }
 }
 .wheel-parent .circle-wrapper {
-  background: conic-gradient(from 0deg, white 0deg 45deg, #cde0fd 45deg 90deg, white 90deg 135deg, #cde0fd 135deg 180deg, white 180deg 225deg, #cde0fd 225deg 270deg, white 270deg 315deg, #cde0fd 315deg 360deg);
   overflow: hidden;
   position: absolute;
   margin-inline: auto;
-  width: 300px;
-  height: 300px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
   z-index: 3;
   top: 11%;
@@ -4859,19 +4858,19 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
 }
 @media only screen and (max-width: 767px) {
   .wheel-parent .circle-wrapper {
-    width: 230px;
-    height: 230px;
+    width: 300px;
+    height: 300px;
   }
 }
 .wheel-parent .wheel-wrapper {
-  width: 460px;
-  height: 460px;
+  width: 600px;
+  height: 600px;
   position: relative;
 }
 @media only screen and (max-width: 767px) {
   .wheel-parent .wheel-wrapper {
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
   }
 }
 .wheel-parent .wheel-wrapper .wheel-img {
@@ -4887,7 +4886,7 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
   transform: translateX(-60%);
   z-index: 4;
   width: 45px;
-  top: 12px;
+  top: 15px;
 }
 @media only screen and (max-width: 767px) {
   .wheel-parent .wheel-wrapper .indicator-img {

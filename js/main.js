@@ -579,9 +579,44 @@ $(document).ready(function () {
 
   // Wheel in studentsWheel page
 
+
+  // Style Circle Wrapper
+  
+  const items = document.querySelectorAll(".circle-wrapper .item");
+  const itemsCount = items.length; 
+  const segment = 360 / itemsCount;
+
+ 
+  const colors = ["#cde0fd", "white"];
+  let stops = [];
+ 
+  for (let i = 0; i < itemsCount; i++) {
+    const start = i * segment;
+    const end = (i + 1) * segment;
+    const color = colors[i % colors.length];
+    stops.push(`${color} ${start}deg ${end}deg`);
+  }
+  
+  const gradientStops = stops.join(", ");
+  
+  document.querySelector(
+    ".circle-wrapper"
+  ).style.background = `conic-gradient(from 0deg, ${gradientStops})`;
+
+  // ***************************
+
+  
+  // WHEEL
+
   let studentsInWheel = Array.from(
     document.querySelectorAll(".wheel-parent .item")
   );
+  let itemCount = studentsInWheel.length;
+  let angleStep = 360 / itemCount;
+ 
+  studentsInWheel.forEach((item, index) => {
+    item.style.transform = `rotate(${angleStep * index + angleStep / 2}deg)`;
+  });
 
   const wheel = document.querySelector(".wheel-parent .circle-wrapper");
   const spinButton = document.querySelector(".wheel-parent .rotate-btn");
@@ -594,18 +629,16 @@ $(document).ready(function () {
       const numRotations = 5 + Math.floor(Math.random() * 6);
       const additionalRotation = numRotations * 360 + randomAngle;
       currentAngle += additionalRotation;
-
       wheel.style.transform = `translateX(-50%) rotate(${currentAngle}deg)`;
       spinButton.disabled = true;
-
       setTimeout(() => {
         const effectiveAngle = (360 - (currentAngle % 360)) % 360;
-        let index = Math.floor(effectiveAngle / 45);
+        let index = Math.floor(effectiveAngle / angleStep);
         const selectedElement = studentsInWheel[index];
         const selectedName = selectedElement.textContent.trim();
         let selectedId = selectedElement.getAttribute("data-id");
-        console.log(selectedId);
-        console.log(selectedName);
+        console.log("Selected ID:", selectedId);
+        console.log("Selected Name:", selectedName);
         spinButton.disabled = false;
       }, 5000);
     });
