@@ -622,7 +622,6 @@
   }
 }
 
-
 .wheel-parent {
   margin-top: 45px;
   display: flex;
@@ -634,9 +633,9 @@
   }
   .rotate-btn {
     position: absolute;
-    top: 50%;
+    top: 52.5%; /* نص الديف - نص الدايرة + نص الدايرة */
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     z-index: 5;
     width: 71px;
     height: 71px;
@@ -653,6 +652,7 @@
       width: 50px;
       height: 50px;
       font-size: 13px;
+      top: 60%;
     }
   }
   .item {
@@ -667,21 +667,23 @@
     cursor: pointer;
     .text {
       position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translate(-50%, 0);
+      top: 1%;
+      left: 41.5%;
+      transform: rotate(-90deg) translate(-50%, 0);
+      transform-origin: 50% 50%;
       font-size: 12px;
       display: block;
       font-weight: 700;
       text-align: center;
       color: #000;
-      max-width: 90px;
+      // max-width: 90px;
       // max-width: 105px;
       // transform: rotate(-16deg);
       // top: 37%;
       @include max-768 {
         font-size: 10px;
-        max-width: 38px;
+        left: 36.5%;
+        // max-width: 38px;
       }
     }
   }
@@ -740,6 +742,7 @@
       top: 15px;
       @include max-768 {
         width: 30px;
+        top: 0;
       }
     }
   }

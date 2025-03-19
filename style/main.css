@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Bahij TheSansArabic";
   src: url("../fonts/bahij/BahijTheSansArabic-ExtraBold.woff2") format("woff2"), url("../fonts/bahij/BahijTheSansArabic-ExtraBold.woff") format("woff"), url("../fonts/bahij/BahijTheSansArabic-ExtraBold.ttf") format("truetype");
@@ -4792,9 +4793,9 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
 }
 .wheel-parent .rotate-btn {
   position: absolute;
-  top: 50%;
+  top: 52.5%; /* نص الديف - نص الدايرة + نص الدايرة */
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   z-index: 5;
   width: 71px;
   height: 71px;
@@ -4813,6 +4814,7 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
     width: 50px;
     height: 50px;
     font-size: 13px;
+    top: 60%;
   }
 }
 .wheel-parent .item {
@@ -4826,20 +4828,20 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
 }
 .wheel-parent .item .text {
   position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, 0);
+  top: 1%;
+  left: 41.5%;
+  transform: rotate(-90deg) translate(-50%, 0);
+  transform-origin: 50% 50%;
   font-size: 12px;
   display: block;
   font-weight: 700;
   text-align: center;
   color: #000;
-  max-width: 90px;
 }
 @media only screen and (max-width: 767px) {
   .wheel-parent .item .text {
     font-size: 10px;
-    max-width: 38px;
+    left: 36.5%;
   }
 }
 .wheel-parent .circle-wrapper {
@@ -4891,6 +4893,7 @@ html[dir=rtl] .classes-parent html[dir=ltr] .select2-container .select2-selectio
 @media only screen and (max-width: 767px) {
   .wheel-parent .wheel-wrapper .indicator-img {
     width: 30px;
+    top: 0;
   }
 }
 
